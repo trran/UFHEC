@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOrder));
       System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "Pan",
@@ -36,15 +37,7 @@
             "500"}, -1);
       System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
       System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOrder));
       this.splitContainerMain = new System.Windows.Forms.SplitContainer();
-      this.panel3 = new System.Windows.Forms.Panel();
-      this.listViewDetails = new System.Windows.Forms.ListView();
-      this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.panel4 = new System.Windows.Forms.Panel();
       this.toolStrip1 = new System.Windows.Forms.ToolStrip();
       this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
@@ -60,6 +53,13 @@
       this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
       this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+      this.listViewDetails = new System.Windows.Forms.ListView();
+      this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.panel3 = new System.Windows.Forms.Panel();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
       this.splitContainerMain.Panel1.SuspendLayout();
       this.splitContainerMain.Panel2.SuspendLayout();
@@ -88,66 +88,6 @@
       this.splitContainerMain.SplitterDistance = 254;
       this.splitContainerMain.SplitterIncrement = 2;
       this.splitContainerMain.TabIndex = 1;
-      // 
-      // panel3
-      // 
-      this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel3.Location = new System.Drawing.Point(0, 0);
-      this.panel3.Name = "panel3";
-      this.panel3.Size = new System.Drawing.Size(1184, 54);
-      this.panel3.TabIndex = 0;
-      // 
-      // listViewDetails
-      // 
-      this.listViewDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-      this.listViewDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.listViewDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-      this.listViewDetails.FullRowSelect = true;
-      this.listViewDetails.GridLines = true;
-      this.listViewDetails.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
-      this.listViewDetails.Location = new System.Drawing.Point(0, 54);
-      this.listViewDetails.MultiSelect = false;
-      this.listViewDetails.Name = "listViewDetails";
-      this.listViewDetails.Size = new System.Drawing.Size(1184, 320);
-      this.listViewDetails.TabIndex = 1;
-      this.listViewDetails.UseCompatibleStateImageBehavior = false;
-      this.listViewDetails.View = System.Windows.Forms.View.Details;
-      // 
-      // columnHeader1
-      // 
-      this.columnHeader1.Text = "Id";
-      this.columnHeader1.Width = 84;
-      // 
-      // columnHeader2
-      // 
-      this.columnHeader2.Text = "Descripcion";
-      this.columnHeader2.Width = 268;
-      // 
-      // columnHeader3
-      // 
-      this.columnHeader3.Text = "Cantidad";
-      this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      this.columnHeader3.Width = 91;
-      // 
-      // columnHeader4
-      // 
-      this.columnHeader4.Text = "Precio";
-      this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      this.columnHeader4.Width = 158;
-      // 
-      // columnHeader5
-      // 
-      this.columnHeader5.Text = "Total";
-      this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      this.columnHeader5.Width = 176;
       // 
       // panel4
       // 
@@ -181,6 +121,7 @@
       this.toolStrip1.Stretch = true;
       this.toolStrip1.TabIndex = 3;
       this.toolStrip1.Text = "toolStrip1";
+      this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
       // 
       // toolStripButtonNew
       // 
@@ -288,6 +229,66 @@
       // 
       this.toolStripSeparator5.Name = "toolStripSeparator5";
       this.toolStripSeparator5.Size = new System.Drawing.Size(6, 48);
+      // 
+      // listViewDetails
+      // 
+      this.listViewDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+      this.listViewDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.listViewDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+      this.listViewDetails.FullRowSelect = true;
+      this.listViewDetails.GridLines = true;
+      this.listViewDetails.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3});
+      this.listViewDetails.Location = new System.Drawing.Point(0, 54);
+      this.listViewDetails.MultiSelect = false;
+      this.listViewDetails.Name = "listViewDetails";
+      this.listViewDetails.Size = new System.Drawing.Size(1184, 320);
+      this.listViewDetails.TabIndex = 1;
+      this.listViewDetails.UseCompatibleStateImageBehavior = false;
+      this.listViewDetails.View = System.Windows.Forms.View.Details;
+      // 
+      // columnHeader1
+      // 
+      this.columnHeader1.Text = "Id";
+      this.columnHeader1.Width = 84;
+      // 
+      // columnHeader2
+      // 
+      this.columnHeader2.Text = "Descripcion";
+      this.columnHeader2.Width = 268;
+      // 
+      // columnHeader3
+      // 
+      this.columnHeader3.Text = "Cantidad";
+      this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+      this.columnHeader3.Width = 91;
+      // 
+      // columnHeader4
+      // 
+      this.columnHeader4.Text = "Precio";
+      this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      this.columnHeader4.Width = 158;
+      // 
+      // columnHeader5
+      // 
+      this.columnHeader5.Text = "Total";
+      this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      this.columnHeader5.Width = 176;
+      // 
+      // panel3
+      // 
+      this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel3.Location = new System.Drawing.Point(0, 0);
+      this.panel3.Name = "panel3";
+      this.panel3.Size = new System.Drawing.Size(1184, 54);
+      this.panel3.TabIndex = 0;
       // 
       // FormOrder
       // 
