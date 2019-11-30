@@ -50,3 +50,4 @@ E:\Desarrollo\RTM\RTM\obj\Debug\RTM.Forms.FormReportViewer.resources
 E:\Desarrollo\RTM\RTM\obj\Debug\RTM.Forms.FormConsulta.resources
 E:\Desarrollo\RTM\RTM\bin\Debug\SX.DLL
 E:\Desarrollo\RTM\RTM\obj\Debug\RTM.Forms.FormOrder.resources
+E:\Desarrollo\RTM\RTM\obj\Debug\RTM.Forms.FormProducto.resources

@@ -47,6 +47,7 @@
       this.timerMainMenuStart = new System.Windows.Forms.Timer(this.components);
       this.timerMainMenuStop = new System.Windows.Forms.Timer(this.components);
       this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+      this.buttonProductos = new System.Windows.Forms.Button();
       this.panelMenu.SuspendLayout();
       this.panel1.SuspendLayout();
       this.contextMenuStrip1.SuspendLayout();
@@ -55,6 +56,7 @@
       // panelMenu
       // 
       this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(138)))), ((int)(((byte)(206)))));
+      this.panelMenu.Controls.Add(this.buttonProductos);
       this.panelMenu.Controls.Add(this.buttonReporte);
       this.panelMenu.Controls.Add(this.buttonUsuarios);
       this.panelMenu.Controls.Add(this.buttonReportes);
@@ -74,7 +76,7 @@
       this.buttonReporte.ForeColor = System.Drawing.Color.WhiteSmoke;
       this.buttonReporte.Image = ((System.Drawing.Image)(resources.GetObject("buttonReporte.Image")));
       this.buttonReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.buttonReporte.Location = new System.Drawing.Point(0, 261);
+      this.buttonReporte.Location = new System.Drawing.Point(0, 312);
       this.buttonReporte.Name = "buttonReporte";
       this.buttonReporte.Size = new System.Drawing.Size(210, 45);
       this.buttonReporte.TabIndex = 4;
@@ -92,7 +94,7 @@
       this.buttonUsuarios.ForeColor = System.Drawing.Color.WhiteSmoke;
       this.buttonUsuarios.Image = ((System.Drawing.Image)(resources.GetObject("buttonUsuarios.Image")));
       this.buttonUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.buttonUsuarios.Location = new System.Drawing.Point(0, 205);
+      this.buttonUsuarios.Location = new System.Drawing.Point(0, 257);
       this.buttonUsuarios.Name = "buttonUsuarios";
       this.buttonUsuarios.Size = new System.Drawing.Size(210, 45);
       this.buttonUsuarios.TabIndex = 3;
@@ -110,7 +112,7 @@
       this.buttonReportes.ForeColor = System.Drawing.Color.WhiteSmoke;
       this.buttonReportes.Image = ((System.Drawing.Image)(resources.GetObject("buttonReportes.Image")));
       this.buttonReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.buttonReportes.Location = new System.Drawing.Point(0, 93);
+      this.buttonReportes.Location = new System.Drawing.Point(0, 147);
       this.buttonReportes.Name = "buttonReportes";
       this.buttonReportes.Size = new System.Drawing.Size(210, 45);
       this.buttonReportes.TabIndex = 2;
@@ -128,7 +130,7 @@
       this.buttonClientes.ForeColor = System.Drawing.Color.WhiteSmoke;
       this.buttonClientes.Image = ((System.Drawing.Image)(resources.GetObject("buttonClientes.Image")));
       this.buttonClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.buttonClientes.Location = new System.Drawing.Point(0, 149);
+      this.buttonClientes.Location = new System.Drawing.Point(0, 202);
       this.buttonClientes.Name = "buttonClientes";
       this.buttonClientes.Size = new System.Drawing.Size(210, 45);
       this.buttonClientes.TabIndex = 1;
@@ -234,6 +236,24 @@
       this.timerMainMenuStop.Interval = 2;
       this.timerMainMenuStop.Tick += new System.EventHandler(this.timerMainMenuStop_Tick);
       // 
+      // buttonProductos
+      // 
+      this.buttonProductos.FlatAppearance.BorderSize = 0;
+      this.buttonProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.buttonProductos.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonProductos.ForeColor = System.Drawing.Color.WhiteSmoke;
+      this.buttonProductos.Image = ((System.Drawing.Image)(resources.GetObject("buttonProductos.Image")));
+      this.buttonProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.buttonProductos.Location = new System.Drawing.Point(0, 92);
+      this.buttonProductos.Name = "buttonProductos";
+      this.buttonProductos.Size = new System.Drawing.Size(210, 45);
+      this.buttonProductos.TabIndex = 5;
+      this.buttonProductos.Text = "Productos";
+      this.buttonProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.toolTip1.SetToolTip(this.buttonProductos, "Productos");
+      this.buttonProductos.UseVisualStyleBackColor = true;
+      this.buttonProductos.Click += new System.EventHandler(this.buttonProductos_Click);
+      // 
       // FormMainModernUI
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,5 +294,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Button buttonReporte;
+        private System.Windows.Forms.Button buttonProductos;
     }
 }

@@ -115,5 +115,10 @@ namespace RTM
     {
       openFormInPanelMain(new FormConsulta());
     }
+
+    private void buttonProductos_Click(object sender, EventArgs e)
+    {
+      openFormInPanelMain(new FormProducto());
+    }
   }
 }

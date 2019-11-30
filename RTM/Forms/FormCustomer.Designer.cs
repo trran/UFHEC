@@ -55,7 +55,6 @@
       this.label11 = new System.Windows.Forms.Label();
       this.textBoxUsername = new System.Windows.Forms.TextBox();
       this.toolTipPic = new System.Windows.Forms.ToolTip(this.components);
-      this.ovalPictureBox2 = new RTM.OvalPictureBox();
       this.toolStrip1 = new System.Windows.Forms.ToolStrip();
       this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
       this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
@@ -72,10 +71,11 @@
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
       this.htmlToolTip1 = new MetroFramework.Drawing.Html.HtmlToolTip();
       this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+      this.ovalPictureBox2 = new RTM.OvalPictureBox();
       this.panel1.SuspendLayout();
       this.groupBox1.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox2)).BeginInit();
       this.toolStrip1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox2)).BeginInit();
       this.SuspendLayout();
       // 
       // textBoxFirstName
@@ -383,21 +383,6 @@
       this.textBoxUsername.Size = new System.Drawing.Size(403, 35);
       this.textBoxUsername.TabIndex = 0;
       // 
-      // ovalPictureBox2
-      // 
-      this.ovalPictureBox2.BackColor = System.Drawing.Color.DarkGray;
-      this.ovalPictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ovalPictureBox2.BackgroundImage")));
-      this.ovalPictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.ovalPictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.ovalPictureBox2.Location = new System.Drawing.Point(27, 107);
-      this.ovalPictureBox2.Name = "ovalPictureBox2";
-      this.ovalPictureBox2.Size = new System.Drawing.Size(174, 164);
-      this.ovalPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-      this.ovalPictureBox2.TabIndex = 12;
-      this.ovalPictureBox2.TabStop = false;
-      this.toolTipPic.SetToolTip(this.ovalPictureBox2, "Upload image...");
-      this.ovalPictureBox2.Click += new System.EventHandler(this.ovalPictureBox2_Click);
-      // 
       // toolStrip1
       // 
       this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -479,6 +464,7 @@
       this.toolStripButtonEdit.Name = "toolStripButtonEdit";
       this.toolStripButtonEdit.Size = new System.Drawing.Size(45, 45);
       this.toolStripButtonEdit.Text = "Edit";
+      this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
       // 
       // toolStripSeparator2
       // 
@@ -512,6 +498,7 @@
       this.toolStripButtonDelete.Name = "toolStripButtonDelete";
       this.toolStripButtonDelete.Size = new System.Drawing.Size(45, 45);
       this.toolStripButtonDelete.Text = "Delete";
+      this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
       // 
       // toolStripSeparator4
       // 
@@ -539,6 +526,21 @@
       // 
       this.htmlToolTip1.OwnerDraw = true;
       // 
+      // ovalPictureBox2
+      // 
+      this.ovalPictureBox2.BackColor = System.Drawing.Color.DarkGray;
+      this.ovalPictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ovalPictureBox2.BackgroundImage")));
+      this.ovalPictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.ovalPictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+      this.ovalPictureBox2.Location = new System.Drawing.Point(27, 107);
+      this.ovalPictureBox2.Name = "ovalPictureBox2";
+      this.ovalPictureBox2.Size = new System.Drawing.Size(174, 164);
+      this.ovalPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.ovalPictureBox2.TabIndex = 12;
+      this.ovalPictureBox2.TabStop = false;
+      this.toolTipPic.SetToolTip(this.ovalPictureBox2, "Upload image...");
+      this.ovalPictureBox2.Click += new System.EventHandler(this.ovalPictureBox2_Click);
+      // 
       // FormCustomer
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,9 +565,9 @@
       this.panel1.PerformLayout();
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox2)).EndInit();
       this.toolStrip1.ResumeLayout(false);
       this.toolStrip1.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox2)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 

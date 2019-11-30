@@ -8,7 +8,7 @@
 ===============================================================================
 EntitySpaces Version : 2012.1.0930.0
 EntitySpaces Driver  : SQL
-Date Generated       : 16/11/2019 02:05:06 a.m.
+Date Generated       : 11/30/2019 4:44:52 PM
 ===============================================================================
 */
 
@@ -267,7 +267,7 @@ namespace BusinessObjectsRTM
 		}		
 		
 		/// <summary>
-		/// Maps to Productos.ITBIS
+		/// Maps to Productos.Itbis
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.Decimal? Itbis
@@ -307,39 +307,19 @@ namespace BusinessObjectsRTM
 		}		
 		
 		/// <summary>
-		/// Maps to Productos.Bloqueado
-		/// </summary>
-		[DataMember(EmitDefaultValue=false)]
-		virtual public System.Boolean? Bloqueado
-		{
-			get
-			{
-				return base.GetSystemBoolean(ProductosMetadata.ColumnNames.Bloqueado);
-			}
-			
-			set
-			{
-				if(base.SetSystemBoolean(ProductosMetadata.ColumnNames.Bloqueado, value))
-				{
-					OnPropertyChanged(ProductosMetadata.PropertyNames.Bloqueado);
-				}
-			}
-		}		
-		
-		/// <summary>
 		/// Maps to Productos.Qty
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
-		virtual public System.Int32? Qty
+		virtual public System.Decimal? Qty
 		{
 			get
 			{
-				return base.GetSystemInt32(ProductosMetadata.ColumnNames.Qty);
+				return base.GetSystemDecimal(ProductosMetadata.ColumnNames.Qty);
 			}
 			
 			set
 			{
-				if(base.SetSystemInt32(ProductosMetadata.ColumnNames.Qty, value))
+				if(base.SetSystemDecimal(ProductosMetadata.ColumnNames.Qty, value))
 				{
 					OnPropertyChanged(ProductosMetadata.PropertyNames.Qty);
 				}
@@ -393,7 +373,6 @@ namespace BusinessObjectsRTM
 						case "Precio": this.str().Precio = (string)value; break;							
 						case "Itbis": this.str().Itbis = (string)value; break;							
 						case "IdUnidad": this.str().IdUnidad = (string)value; break;							
-						case "Bloqueado": this.str().Bloqueado = (string)value; break;							
 						case "Qty": this.str().Qty = (string)value; break;							
 						case "Estatus": this.str().Estatus = (string)value; break;
 					}
@@ -423,17 +402,10 @@ namespace BusinessObjectsRTM
 								OnPropertyChanged(ProductosMetadata.PropertyNames.Itbis);
 							break;
 						
-						case "Bloqueado":
-						
-							if (value == null || value is System.Boolean)
-								this.Bloqueado = (System.Boolean?)value;
-								OnPropertyChanged(ProductosMetadata.PropertyNames.Bloqueado);
-							break;
-						
 						case "Qty":
 						
-							if (value == null || value is System.Int32)
-								this.Qty = (System.Int32?)value;
+							if (value == null || value is System.Decimal)
+								this.Qty = (System.Decimal?)value;
 								OnPropertyChanged(ProductosMetadata.PropertyNames.Qty);
 							break;
 						
@@ -552,33 +524,18 @@ namespace BusinessObjectsRTM
 				}
 			}
 				
-			public System.String Bloqueado
-			{
-				get
-				{
-					System.Boolean? data = entity.Bloqueado;
-					return (data == null) ? String.Empty : Convert.ToString(data);
-				}
-
-				set
-				{
-					if (value == null || value.Length == 0) entity.Bloqueado = null;
-					else entity.Bloqueado = Convert.ToBoolean(value);
-				}
-			}
-				
 			public System.String Qty
 			{
 				get
 				{
-					System.Int32? data = entity.Qty;
+					System.Decimal? data = entity.Qty;
 					return (data == null) ? String.Empty : Convert.ToString(data);
 				}
 
 				set
 				{
 					if (value == null || value.Length == 0) entity.Qty = null;
-					else entity.Qty = Convert.ToInt32(value);
+					else entity.Qty = Convert.ToDecimal(value);
 				}
 			}
 				
@@ -758,7 +715,6 @@ namespace BusinessObjectsRTM
 				case "Precio": return this.Precio;
 				case "Itbis": return this.Itbis;
 				case "IdUnidad": return this.IdUnidad;
-				case "Bloqueado": return this.Bloqueado;
 				case "Qty": return this.Qty;
 				case "Estatus": return this.Estatus;
 
@@ -795,14 +751,9 @@ namespace BusinessObjectsRTM
 			get { return new esQueryItem(this, ProductosMetadata.ColumnNames.IdUnidad, esSystemType.String); }
 		} 
 		
-		public esQueryItem Bloqueado
-		{
-			get { return new esQueryItem(this, ProductosMetadata.ColumnNames.Bloqueado, esSystemType.Boolean); }
-		} 
-		
 		public esQueryItem Qty
 		{
-			get { return new esQueryItem(this, ProductosMetadata.ColumnNames.Qty, esSystemType.Int32); }
+			get { return new esQueryItem(this, ProductosMetadata.ColumnNames.Qty, esSystemType.Decimal); }
 		} 
 		
 		public esQueryItem Estatus
@@ -819,141 +770,7 @@ namespace BusinessObjectsRTM
 	public partial class Productos : esProductos
 	{
 
-		#region OrdenesDetalleCollectionByIdProducto - Zero To Many
 		
-		static public esPrefetchMap Prefetch_OrdenesDetalleCollectionByIdProducto
-		{
-			get
-			{
-				esPrefetchMap map = new esPrefetchMap();
-				map.PrefetchDelegate = BusinessObjectsRTM.Productos.OrdenesDetalleCollectionByIdProducto_Delegate;
-				map.PropertyName = "OrdenesDetalleCollectionByIdProducto";
-				map.MyColumnName = "IdProducto";
-				map.ParentColumnName = "Id";
-				map.IsMultiPartKey = false;
-				return map;
-			}
-		}		
-		
-		static private void OrdenesDetalleCollectionByIdProducto_Delegate(esPrefetchParameters data)
-		{
-			ProductosQuery parent = new ProductosQuery(data.NextAlias());
-
-			OrdenesDetalleQuery me = data.You != null ? data.You as OrdenesDetalleQuery : new OrdenesDetalleQuery(data.NextAlias());
-
-			if (data.Root == null)
-			{
-				data.Root = me;
-			}
-			
-			data.Root.InnerJoin(parent).On(parent.Id == me.IdProducto);
-
-			data.You = parent;
-		}			
-		
-		/// <summary>
-		/// Zero to Many
-		/// Foreign Key Name - FK_OrdenesDetalle_Productos
-		/// </summary>
-
-		[XmlIgnore]
-		public OrdenesDetalleCollection OrdenesDetalleCollectionByIdProducto
-		{
-			get
-			{
-				if(this._OrdenesDetalleCollectionByIdProducto == null)
-				{
-					this._OrdenesDetalleCollectionByIdProducto = new OrdenesDetalleCollection();
-					this._OrdenesDetalleCollectionByIdProducto.es.Connection.Name = this.es.Connection.Name;
-					this.SetPostSave("OrdenesDetalleCollectionByIdProducto", this._OrdenesDetalleCollectionByIdProducto);
-				
-					if (this.Id != null)
-					{
-						if (!this.es.IsLazyLoadDisabled)
-						{
-							this._OrdenesDetalleCollectionByIdProducto.Query.Where(this._OrdenesDetalleCollectionByIdProducto.Query.IdProducto == this.Id);
-							this._OrdenesDetalleCollectionByIdProducto.Query.Load();
-						}
-
-						// Auto-hookup Foreign Keys
-						this._OrdenesDetalleCollectionByIdProducto.fks.Add(OrdenesDetalleMetadata.ColumnNames.IdProducto, this.Id);
-					}
-				}
-
-				return this._OrdenesDetalleCollectionByIdProducto;
-			}
-			
-			set 
-			{ 
-				if (value != null) throw new Exception("'value' Must be null"); 
-			 
-				if (this._OrdenesDetalleCollectionByIdProducto != null) 
-				{ 
-					this.RemovePostSave("OrdenesDetalleCollectionByIdProducto"); 
-					this._OrdenesDetalleCollectionByIdProducto = null;
-					
-				} 
-			} 			
-		}
-			
-		
-		private OrdenesDetalleCollection _OrdenesDetalleCollectionByIdProducto;
-		#endregion
-
-		
-		protected override esEntityCollectionBase CreateCollectionForPrefetch(string name)
-		{
-			esEntityCollectionBase coll = null;
-
-			switch (name)
-			{
-				case "OrdenesDetalleCollectionByIdProducto":
-					coll = this.OrdenesDetalleCollectionByIdProducto;
-					break;	
-			}
-
-			return coll;
-		}		
-		/// <summary>
-		/// Used internally by the entity's hierarchical properties.
-		/// </summary>
-		protected override List<esPropertyDescriptor> GetHierarchicalProperties()
-		{
-			List<esPropertyDescriptor> props = new List<esPropertyDescriptor>();
-			
-			props.Add(new esPropertyDescriptor(this, "OrdenesDetalleCollectionByIdProducto", typeof(OrdenesDetalleCollection), new OrdenesDetalle()));
-		
-			return props;
-		}
-		
-		/// <summary>
-		/// Called by ApplyPostSaveKeys 
-		/// </summary>
-		/// <param name="coll">The collection to enumerate over</param>
-		/// <param name="key">"The column name</param>
-		/// <param name="value">The column value</param>
-		private void Apply(esEntityCollectionBase coll, string key, object value)
-		{
-			foreach (esEntity obj in coll)
-			{
-				if (obj.es.IsAdded)
-				{
-					obj.SetProperty(key, value);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Used internally for retrieving AutoIncrementing keys
-		/// during hierarchical PostSave.
-		/// </summary>
-		protected override void ApplyPostSaveKeys()
-		{
-			if(this._OrdenesDetalleCollectionByIdProducto != null)
-			{
-				Apply(this._OrdenesDetalleCollectionByIdProducto, "IdProducto", this.Id);
-			}
-		}
 		
 	}
 	
@@ -978,47 +795,40 @@ namespace BusinessObjectsRTM
 				
 			c = new esColumnMetadata(ProductosMetadata.ColumnNames.Nombre, 1, typeof(System.String), esSystemType.String);
 			c.PropertyName = ProductosMetadata.PropertyNames.Nombre;
-			c.CharacterMaxLength = 80;
+			c.CharacterMaxLength = 200;
+			c.IsNullable = true;
 			m_columns.Add(c);
 				
 			c = new esColumnMetadata(ProductosMetadata.ColumnNames.Precio, 2, typeof(System.Decimal), esSystemType.Decimal);
 			c.PropertyName = ProductosMetadata.PropertyNames.Precio;
 			c.NumericPrecision = 19;
-			c.HasDefault = true;
-			c.Default = @"((0))";
 			c.IsNullable = true;
 			m_columns.Add(c);
 				
 			c = new esColumnMetadata(ProductosMetadata.ColumnNames.Itbis, 3, typeof(System.Decimal), esSystemType.Decimal);
 			c.PropertyName = ProductosMetadata.PropertyNames.Itbis;
-			c.NumericPrecision = 4;
-			c.NumericScale = 2;
-			c.HasDefault = true;
-			c.Default = @"((0))";
+			c.NumericPrecision = 19;
+			c.IsNullable = true;
 			m_columns.Add(c);
 				
 			c = new esColumnMetadata(ProductosMetadata.ColumnNames.IdUnidad, 4, typeof(System.String), esSystemType.String);
 			c.PropertyName = ProductosMetadata.PropertyNames.IdUnidad;
-			c.CharacterMaxLength = 20;
-			c.HasDefault = true;
-			c.Default = @"('EA')";
+			c.CharacterMaxLength = 50;
+			c.IsNullable = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(ProductosMetadata.ColumnNames.Bloqueado, 5, typeof(System.Boolean), esSystemType.Boolean);
-			c.PropertyName = ProductosMetadata.PropertyNames.Bloqueado;
-			c.HasDefault = true;
-			c.Default = @"((0))";
-			m_columns.Add(c);
-				
-			c = new esColumnMetadata(ProductosMetadata.ColumnNames.Qty, 6, typeof(System.Int32), esSystemType.Int32);
+			c = new esColumnMetadata(ProductosMetadata.ColumnNames.Qty, 5, typeof(System.Decimal), esSystemType.Decimal);
 			c.PropertyName = ProductosMetadata.PropertyNames.Qty;
-			c.NumericPrecision = 10;
+			c.NumericPrecision = 18;
+			c.NumericScale = 2;
+			c.IsNullable = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(ProductosMetadata.ColumnNames.Estatus, 7, typeof(System.Boolean), esSystemType.Boolean);
+			c = new esColumnMetadata(ProductosMetadata.ColumnNames.Estatus, 6, typeof(System.Boolean), esSystemType.Boolean);
 			c.PropertyName = ProductosMetadata.PropertyNames.Estatus;
 			c.HasDefault = true;
 			c.Default = @"((1))";
+			c.IsNullable = true;
 			m_columns.Add(c);
 				
 		}
@@ -1050,9 +860,8 @@ namespace BusinessObjectsRTM
 			 public const string Id = "Id";
 			 public const string Nombre = "Nombre";
 			 public const string Precio = "Precio";
-			 public const string Itbis = "ITBIS";
+			 public const string Itbis = "Itbis";
 			 public const string IdUnidad = "IdUnidad";
-			 public const string Bloqueado = "Bloqueado";
 			 public const string Qty = "Qty";
 			 public const string Estatus = "Estatus";
 		}
@@ -1066,7 +875,6 @@ namespace BusinessObjectsRTM
 			 public const string Precio = "Precio";
 			 public const string Itbis = "Itbis";
 			 public const string IdUnidad = "IdUnidad";
-			 public const string Bloqueado = "Bloqueado";
 			 public const string Qty = "Qty";
 			 public const string Estatus = "Estatus";
 		}
@@ -1116,10 +924,9 @@ namespace BusinessObjectsRTM
 				meta.AddTypeMap("Id", new esTypeMap("int", "System.Int32"));
 				meta.AddTypeMap("Nombre", new esTypeMap("nvarchar", "System.String"));
 				meta.AddTypeMap("Precio", new esTypeMap("money", "System.Decimal"));
-				meta.AddTypeMap("Itbis", new esTypeMap("decimal", "System.Decimal"));
+				meta.AddTypeMap("Itbis", new esTypeMap("money", "System.Decimal"));
 				meta.AddTypeMap("IdUnidad", new esTypeMap("nvarchar", "System.String"));
-				meta.AddTypeMap("Bloqueado", new esTypeMap("bit", "System.Boolean"));
-				meta.AddTypeMap("Qty", new esTypeMap("int", "System.Int32"));
+				meta.AddTypeMap("Qty", new esTypeMap("decimal", "System.Decimal"));
 				meta.AddTypeMap("Estatus", new esTypeMap("bit", "System.Boolean"));			
 				
 				

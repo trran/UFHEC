@@ -16,3 +16,4 @@ E:\Desarrollo\RTM\BusinessObjectsRTM\bin\Debug\EntitySpaces.Loader.dll
 E:\Desarrollo\RTM\BusinessObjectsRTM\bin\Debug\EntitySpaces.SqlClientProvider.dll
 E:\Desarrollo\RTM\BusinessObjectsRTM\obj\Debug\BusinessObjectsRTM.dll
 E:\Desarrollo\RTM\BusinessObjectsRTM\obj\Debug\BusinessObjectsRTM.pdb
+E:\Desarrollo\RTM\BusinessObjectsRTM\obj\Debug\BusinessObjectsRTM.csprojResolveAssemblyReference.cache

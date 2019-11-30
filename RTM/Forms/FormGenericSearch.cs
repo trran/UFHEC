@@ -45,6 +45,7 @@ namespace RTM.Forms
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             Id = Convert.ToInt32(metroGrid1.CurrentRow.Cells["Id"].Value);
+          //aqui corregir.
             Close();
         }
 

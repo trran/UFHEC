@@ -78,7 +78,9 @@
     <Compile Include="Generated\Customer.cs" />
     <Compile Include="Generated\Ordenes.cs" />
     <Compile Include="Generated\OrdenesDetalle.cs" />
-    <Compile Include="Generated\Productos.cs" />
+    <Compile Include="Generated\Productos.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

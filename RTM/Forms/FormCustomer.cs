@@ -289,5 +289,15 @@ namespace RTM
       formReport.Show();
       formReport.RefreshReport();
     }
+
+    private void toolStripButtonEdit_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void toolStripButtonDelete_Click(object sender, EventArgs e)
+    {
+
+    }
   }
 }
