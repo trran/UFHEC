@@ -16,6 +16,7 @@ namespace RTM.Forms
   public partial class FormProducto : Form, IController
   {
     private readonly ProductosController controller = new ProductosController(CurrentUserInfo.Username);
+    private int productoId;
     public FormProducto()
     {
       InitializeComponent();
@@ -68,9 +69,11 @@ namespace RTM.Forms
           break;
 
         case "toolStripButtonDelete":
+          clickedItem = toolStripButtonUndo;
           break;
 
         case "toolStripButtonPrint":
+          clickedItem = toolStripButtonUndo;
           break;
 
         default:
@@ -100,6 +103,7 @@ namespace RTM.Forms
     }
 
     private void clearControls() {
+      productoId = 0;
       textBoxDescripcion.Clear();
       metroComboBoxUnidadMedida.SelectedItem = null;
       numericUpDownPrecio.Value = 0;
@@ -147,6 +151,7 @@ namespace RTM.Forms
     public void ScatterEntityValues()
     {
       controller.ScatterEntityValues();
+      productoId = controller.Id;
       textBoxDescripcion.Text = controller.Nombre;
       metroComboBoxUnidadMedida.SelectedItem = controller.IdUnidad;
       numericUpDownPrecio.Value = controller.Precio;
@@ -157,6 +162,7 @@ namespace RTM.Forms
 
     public void GattherEntityValues()
     {
+      controller.Id = productoId;
       controller.Nombre = textBoxDescripcion.Text;
       controller.IdUnidad = metroComboBoxUnidadMedida.SelectedItem != null ? metroComboBoxUnidadMedida.SelectedItem.ToString() : string.Empty;
       controller.Precio = numericUpDownPrecio.Value;
@@ -188,6 +194,7 @@ namespace RTM.Forms
 
     private void toolStripButtonNew_Click(object sender, EventArgs e)
     {
+      AddNewEntity();
       clearControls();
     }
 

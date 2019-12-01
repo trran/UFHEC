@@ -217,9 +217,11 @@ namespace RTM
           break;
 
         case "toolStripButtonDelete":
+          clickedItem = toolStripButtonUndo;
           break;
 
         case "toolStripButtonPrint":
+          clickedItem = toolStripButtonUndo;
           break;
 
         default:
@@ -278,6 +280,7 @@ namespace RTM
 
     private void toolStripButtonNew_Click(object sender, EventArgs e)
     {
+      AddNewEntity();
       clearControls();
     }
 
