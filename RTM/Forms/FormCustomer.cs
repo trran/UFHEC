@@ -110,6 +110,7 @@ namespace RTM
     private byte[] imageToByte(Image img)
     {
       ImageConverter converter = new ImageConverter();
+      //bug aqui.
       return (byte[])converter.ConvertTo(img, typeof(byte[]));
     }
 
