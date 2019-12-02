@@ -30,7 +30,7 @@ namespace RTM.Forms
         {
 
           WorkBook wb = new WorkBook();
-          CustomerController controller = new CustomerController(CurrentUserInfo.Username);
+          UsuarioController controller = new UsuarioController(CurrentUserInfo.Username);
           DataTable dt = controller.LoadDataTable(string.Empty);
           wb.ImportDataTable(dt, true, 0, 0, dt.Rows.Count, dt.Columns.Count);
 

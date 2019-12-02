@@ -60,7 +60,7 @@ namespace RTM
       //  timerMainMenuStop.Start();
 
       //buttonUsuarios.Enabled = true;
-      openFormInPanelMain(new FormCustomer());
+      openFormInPanelMain(new FormUsuario());
     }
 
     private void timerMainMenuStart_Tick(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace RTM
     {
       DataTable dt;
 
-      CustomerController controller = new CustomerController(CurrentUserInfo.Username);
+      UsuarioController controller = new UsuarioController(CurrentUserInfo.Username);
       dt = controller.LoadDataTable(string.Empty);
 
       openFormInPanelMain(new FormReportViewer(@"E:\Desarrollo\RTM\RTM\Reports\EmployeeReport.rpt", "Customer", dt));
@@ -119,6 +119,11 @@ namespace RTM
     private void buttonProductos_Click(object sender, EventArgs e)
     {
       openFormInPanelMain(new FormProducto());
+    }
+
+    private void buttonClientes_Click(object sender, EventArgs e)
+    {
+      openFormInPanelMain(new FormCliente());
     }
   }
 }

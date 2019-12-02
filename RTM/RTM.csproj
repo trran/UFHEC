@@ -104,17 +104,23 @@
     <Compile Include="FormMainModernUI.Designer.cs">
       <DependentUpon>FormMainModernUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCliente.Designer.cs">
+      <DependentUpon>FormCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormConsulta.Designer.cs">
       <DependentUpon>FormConsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormCustomer.cs">
+    <Compile Include="Forms\FormUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormCustomer.Designer.cs">
-      <DependentUpon>FormCustomer.cs</DependentUpon>
+    <Compile Include="Forms\FormUsuario.Designer.cs">
+      <DependentUpon>FormUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormGenericSearch.cs">
       <SubType>Form</SubType>
@@ -160,11 +166,14 @@
     <EmbeddedResource Include="FormMainModernUI.resx">
       <DependentUpon>FormMainModernUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCliente.resx">
+      <DependentUpon>FormCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormConsulta.resx">
       <DependentUpon>FormConsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormCustomer.resx">
-      <DependentUpon>FormCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormUsuario.resx">
+      <DependentUpon>FormUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormGenericSearch.resx">
       <DependentUpon>FormGenericSearch.cs</DependentUpon>

@@ -31,6 +31,7 @@
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainModernUI));
       this.panelMenu = new System.Windows.Forms.Panel();
+      this.buttonProductos = new System.Windows.Forms.Button();
       this.buttonReporte = new System.Windows.Forms.Button();
       this.buttonUsuarios = new System.Windows.Forms.Button();
       this.buttonReportes = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
       this.timerMainMenuStart = new System.Windows.Forms.Timer(this.components);
       this.timerMainMenuStop = new System.Windows.Forms.Timer(this.components);
       this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-      this.buttonProductos = new System.Windows.Forms.Button();
       this.panelMenu.SuspendLayout();
       this.panel1.SuspendLayout();
       this.contextMenuStrip1.SuspendLayout();
@@ -67,6 +67,24 @@
       this.panelMenu.Name = "panelMenu";
       this.panelMenu.Size = new System.Drawing.Size(50, 647);
       this.panelMenu.TabIndex = 0;
+      // 
+      // buttonProductos
+      // 
+      this.buttonProductos.FlatAppearance.BorderSize = 0;
+      this.buttonProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.buttonProductos.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonProductos.ForeColor = System.Drawing.Color.WhiteSmoke;
+      this.buttonProductos.Image = ((System.Drawing.Image)(resources.GetObject("buttonProductos.Image")));
+      this.buttonProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.buttonProductos.Location = new System.Drawing.Point(0, 92);
+      this.buttonProductos.Name = "buttonProductos";
+      this.buttonProductos.Size = new System.Drawing.Size(210, 45);
+      this.buttonProductos.TabIndex = 5;
+      this.buttonProductos.Text = "Productos";
+      this.buttonProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.toolTip1.SetToolTip(this.buttonProductos, "Productos");
+      this.buttonProductos.UseVisualStyleBackColor = true;
+      this.buttonProductos.Click += new System.EventHandler(this.buttonProductos_Click);
       // 
       // buttonReporte
       // 
@@ -138,6 +156,7 @@
       this.buttonClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       this.toolTip1.SetToolTip(this.buttonClientes, "Clientes");
       this.buttonClientes.UseVisualStyleBackColor = true;
+      this.buttonClientes.Click += new System.EventHandler(this.buttonClientes_Click);
       // 
       // buttonOrdenes
       // 
@@ -235,24 +254,6 @@
       // 
       this.timerMainMenuStop.Interval = 2;
       this.timerMainMenuStop.Tick += new System.EventHandler(this.timerMainMenuStop_Tick);
-      // 
-      // buttonProductos
-      // 
-      this.buttonProductos.FlatAppearance.BorderSize = 0;
-      this.buttonProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.buttonProductos.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonProductos.ForeColor = System.Drawing.Color.WhiteSmoke;
-      this.buttonProductos.Image = ((System.Drawing.Image)(resources.GetObject("buttonProductos.Image")));
-      this.buttonProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.buttonProductos.Location = new System.Drawing.Point(0, 92);
-      this.buttonProductos.Name = "buttonProductos";
-      this.buttonProductos.Size = new System.Drawing.Size(210, 45);
-      this.buttonProductos.TabIndex = 5;
-      this.buttonProductos.Text = "Productos";
-      this.buttonProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.toolTip1.SetToolTip(this.buttonProductos, "Productos");
-      this.buttonProductos.UseVisualStyleBackColor = true;
-      this.buttonProductos.Click += new System.EventHandler(this.buttonProductos_Click);
       // 
       // FormMainModernUI
       // 

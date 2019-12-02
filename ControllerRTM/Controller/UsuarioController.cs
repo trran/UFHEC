@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace ControllerRTM.Controller
 {
-    public class CustomerController : IController
+    public class UsuarioController : IController
     {
-        private CustomerController()
+        private UsuarioController()
         {
 
         }
-        private Customer customer = new Customer();
+        private Usuario usuario = new Usuario();
         private readonly string _currentUsername;
-        public CustomerController(string currentUsername)
+        public UsuarioController(string currentUsername)
         {
             _currentUsername = currentUsername;
         }
@@ -42,8 +42,8 @@ namespace ControllerRTM.Controller
             bool saved = true;
             try
             {
-                customer.Save();
-                saved = customer.Id > 0;
+                usuario.Save();
+                saved = usuario.Id > 0;
             }
             catch (Exception)
             {
@@ -61,8 +61,8 @@ namespace ControllerRTM.Controller
             {
                 if (result = SearchEntity(ids))
                 {
-                    customer.MarkAsDeleted();
-                    customer.Save();
+                    usuario.MarkAsDeleted();
+                    usuario.Save();
                 }
             }
             catch (Exception)
@@ -76,51 +76,51 @@ namespace ControllerRTM.Controller
         public bool SearchEntity(params object[] ids)
         {
             AddNewEntity();
-            return customer.LoadByPrimaryKey(Convert.ToInt32(ids[0]));
+            return usuario.LoadByPrimaryKey(Convert.ToInt32(ids[0]));
         }
 
         public void AddNewEntity()
         {
-            customer = new Customer();
+          usuario = new Usuario();
         }
 
         public void ScatterEntityValues()
         {
-            Id = customer.Id ?? 0;
-            FirstName = customer.FirstName;
-            LastName = customer.LastName;
-            BirthDate = customer.BirthDate ?? DateTime.Now;
-            Address = customer.Address;
-            City = customer.City;
-            ZipCode = customer.ZipCode;
-            Position = customer.Position;
-            Phone = customer.Phone;
-            Notes = customer.Notes;
-            Username = customer.Username;
-            Password = customer.Password;
-            Avatar = customer.Avatar ;
+            Id = usuario.Id ?? 0;
+            FirstName = usuario.FirstName;
+            LastName = usuario.LastName;
+            BirthDate = usuario.BirthDate ?? DateTime.Now;
+            Address = usuario.Address;
+            City = usuario.City;
+            ZipCode = usuario.ZipCode;
+            Position = usuario.Position;
+            Phone = usuario.Phone;
+            Notes = usuario.Notes;
+            Username = usuario.Username;
+            Password = usuario.Password;
+            Avatar = usuario.Avatar ;
         }
 
         public void GattherEntityValues()
         {
-            customer.Id = Id;
-            customer.FirstName = FirstName;
-            customer.LastName = LastName;
-            customer.BirthDate = BirthDate;
-            customer.Address = Address;
-            customer.City = City;
-            customer.ZipCode = ZipCode;
-            customer.Position = Position;
-            customer.Phone = Phone;
-            customer.Notes = Notes;
-            customer.Username = Username;
-            customer.Password = Password;
-            customer.Avatar = Avatar;
+            usuario.Id = Id;
+            usuario.FirstName = FirstName;
+            usuario.LastName = LastName;
+            usuario.BirthDate = BirthDate;
+            usuario.Address = Address;
+            usuario.City = City;
+            usuario.ZipCode = ZipCode;
+            usuario.Position = Position;
+            usuario.Phone = Phone;
+            usuario.Notes = Notes;
+            usuario.Username = Username;
+            usuario.Password = Password;
+            usuario.Avatar = Avatar;
         }
 
         public DataTable LoadDataTable(string criteria)
         {
-            CustomerQuery q = new CustomerQuery();
+          UsuarioQuery q = new UsuarioQuery();
 
             q.SelectAll();
             q.Where(q.FirstName.Like("%" + criteria + "%") || q.LastName.Like("%" + criteria + "%") || q.Username.Like("%" + criteria + "%")
@@ -131,13 +131,12 @@ namespace ControllerRTM.Controller
 
         public DataTable LoadDataUser()
         {
-          CustomerQuery q = new CustomerQuery();
+          UsuarioQuery q = new UsuarioQuery();
 
           q.SelectAll();
           q.Where(q.Id == Id);
 
           return q.LoadDataTable();
         }
-
     }
 }

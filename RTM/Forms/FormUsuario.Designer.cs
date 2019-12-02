@@ -1,6 +1,6 @@
 ﻿namespace RTM
 {
-  partial class FormCustomer
+  partial class FormUsuario
   {
     /// <summary>
     /// Required designer variable.
@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCustomer));
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsuario));
       this.textBoxFirstName = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
@@ -541,7 +541,7 @@
       this.toolTipPic.SetToolTip(this.ovalPictureBox2, "Upload image...");
       this.ovalPictureBox2.Click += new System.EventHandler(this.ovalPictureBox2_Click);
       // 
-      // FormCustomer
+      // FormUsuario
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -558,7 +558,7 @@
       this.Controls.Add(this.label1);
       this.Controls.Add(this.textBoxFirstName);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-      this.Name = "FormCustomer";
+      this.Name = "FormUsuario";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "523, 36";
       this.panel1.ResumeLayout(false);

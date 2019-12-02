@@ -16,11 +16,11 @@ using System.Windows.Forms;
 
 namespace RTM
 {
-  public partial class FormCustomer : Form, IController
+  public partial class FormUsuario : Form, IController
   {
-    private readonly CustomerController controller = new CustomerController(CurrentUserInfo.Username);
+    private readonly UsuarioController controller = new UsuarioController(CurrentUserInfo.Username);
     private int customerId;
-    public FormCustomer()
+    public FormUsuario()
     {
       InitializeComponent();
       toolStrip1_ItemClicked(null, new ToolStripItemClickedEventArgs(toolStripButtonUndo));
@@ -79,7 +79,9 @@ namespace RTM
       richTextBoxNotes.Text = controller.Notes;
 
       if (controller.Avatar != null && controller.Avatar.Length > 0)
+      {
         ovalPictureBox2.Image = byteToImage(controller.Avatar);
+      }
       else
       {
         ovalPictureBox2.Image = null;

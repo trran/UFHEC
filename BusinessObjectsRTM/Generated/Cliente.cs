@@ -8,7 +8,7 @@
 ===============================================================================
 EntitySpaces Version : 2012.1.0930.0
 EntitySpaces Driver  : SQL
-Date Generated       : 16/11/2019 02:05:03 a.m.
+Date Generated       : 12/1/2019 8:38:52 PM
 ===============================================================================
 */
 
@@ -32,15 +32,15 @@ using EntitySpaces.DynamicQuery;
 namespace BusinessObjectsRTM
 {
 	/// <summary>
-	/// Encapsulates the 'Clientes' table
+	/// Encapsulates the 'Cliente' table
 	/// </summary>
 
     [DebuggerDisplay("Data = {Debug}")]
 	[Serializable]
 	[DataContract]
-	[KnownType(typeof(Clientes))]	
-	[XmlType("Clientes")]
-	public partial class Clientes : esClientes
+	[KnownType(typeof(Cliente))]	
+	[XmlType("Cliente")]
+	public partial class Cliente : esCliente
 	{	
 		[DebuggerBrowsable(DebuggerBrowsableState.RootHidden | DebuggerBrowsableState.Never)]
 		protected override esEntityDebuggerView[] Debug
@@ -50,13 +50,13 @@ namespace BusinessObjectsRTM
 
 		override public esEntity CreateInstance()
 		{
-			return new Clientes();
+			return new Cliente();
 		}
 		
 		#region Static Quick Access Methods
 		static public void Delete(System.Int32 id)
 		{
-			var obj = new Clientes();
+			var obj = new Cliente();
 			obj.Id = id;
 			obj.AcceptChanges();
 			obj.MarkAsDeleted();
@@ -65,7 +65,7 @@ namespace BusinessObjectsRTM
 
 	    static public void Delete(System.Int32 id, esSqlAccessType sqlAccessType)
 		{
-			var obj = new Clientes();
+			var obj = new Cliente();
 			obj.Id = id;
 			obj.AcceptChanges();
 			obj.MarkAsDeleted();
@@ -88,10 +88,10 @@ namespace BusinessObjectsRTM
     [DebuggerDisplay("Count = {Count}")]
 	[Serializable]
 	[CollectionDataContract]
-	[XmlType("ClientesCollection")]
-	public partial class ClientesCollection : esClientesCollection, IEnumerable<Clientes>
+	[XmlType("ClienteCollection")]
+	public partial class ClienteCollection : esClienteCollection, IEnumerable<Cliente>
 	{
-		public Clientes FindByPrimaryKey(System.Int32 id)
+		public Cliente FindByPrimaryKey(System.Int32 id)
 		{
 			return this.SingleOrDefault(e => e.Id == id);
 		}
@@ -101,17 +101,17 @@ namespace BusinessObjectsRTM
 		#region WCF Service Class
 		
 		[DataContract]
-		[KnownType(typeof(Clientes))]
-		public class ClientesCollectionWCFPacket : esCollectionWCFPacket<ClientesCollection>
+		[KnownType(typeof(Cliente))]
+		public class ClienteCollectionWCFPacket : esCollectionWCFPacket<ClienteCollection>
 		{
-			public static implicit operator ClientesCollection(ClientesCollectionWCFPacket packet)
+			public static implicit operator ClienteCollection(ClienteCollectionWCFPacket packet)
 			{
 				return packet.Collection;
 			}
 
-			public static implicit operator ClientesCollectionWCFPacket(ClientesCollection collection)
+			public static implicit operator ClienteCollectionWCFPacket(ClienteCollection collection)
 			{
-				return new ClientesCollectionWCFPacket() { Collection = collection };
+				return new ClienteCollectionWCFPacket() { Collection = collection };
 			}
 		}
 		
@@ -128,16 +128,16 @@ namespace BusinessObjectsRTM
 
     [DebuggerDisplay("Query = {Parse()}")]
 	[Serializable]	
-	public partial class ClientesQuery : esClientesQuery
+	public partial class ClienteQuery : esClienteQuery
 	{
-		public ClientesQuery(string joinAlias)
+		public ClienteQuery(string joinAlias)
 		{
 			this.es.JoinAlias = joinAlias;
 		}	
 
 		override protected string GetQueryName()
 		{
-			return "ClientesQuery";
+			return "ClienteQuery";
 		}
 		
 		
@@ -148,14 +148,14 @@ namespace BusinessObjectsRTM
 	
 		#region Explicit Casts
 		
-		public static explicit operator string(ClientesQuery query)
+		public static explicit operator string(ClienteQuery query)
 		{
-			return ClientesQuery.SerializeHelper.ToXml(query);
+			return ClienteQuery.SerializeHelper.ToXml(query);
 		}
 
-		public static explicit operator ClientesQuery(string query)
+		public static explicit operator ClienteQuery(string query)
 		{
-			return (ClientesQuery)ClientesQuery.SerializeHelper.FromXml(query, typeof(ClientesQuery));
+			return (ClienteQuery)ClienteQuery.SerializeHelper.FromXml(query, typeof(ClienteQuery));
 		}
 		
 		#endregion		
@@ -163,9 +163,9 @@ namespace BusinessObjectsRTM
 
 	[DataContract]
 	[Serializable]
-	abstract public partial class esClientes : esEntity
+	abstract public partial class esCliente : esEntity
 	{
-		public esClientes()
+		public esCliente()
 		{
 
 		}
@@ -189,7 +189,7 @@ namespace BusinessObjectsRTM
 
 		private bool LoadByPrimaryKeyDynamic(System.Int32 id)
 		{
-			ClientesQuery query = new ClientesQuery();
+			ClienteQuery query = new ClienteQuery();
 			query.Where(query.Id == id);
 			return this.Load(query);
 		}
@@ -207,101 +207,161 @@ namespace BusinessObjectsRTM
 		
 		
 		/// <summary>
-		/// Maps to Clientes.Id
+		/// Maps to Cliente.Id
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.Int32? Id
 		{
 			get
 			{
-				return base.GetSystemInt32(ClientesMetadata.ColumnNames.Id);
+				return base.GetSystemInt32(ClienteMetadata.ColumnNames.Id);
 			}
 			
 			set
 			{
-				if(base.SetSystemInt32(ClientesMetadata.ColumnNames.Id, value))
+				if(base.SetSystemInt32(ClienteMetadata.ColumnNames.Id, value))
 				{
-					OnPropertyChanged(ClientesMetadata.PropertyNames.Id);
+					OnPropertyChanged(ClienteMetadata.PropertyNames.Id);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Clientes.Nombre
+		/// Maps to Cliente.Nombre
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String Nombre
 		{
 			get
 			{
-				return base.GetSystemString(ClientesMetadata.ColumnNames.Nombre);
+				return base.GetSystemString(ClienteMetadata.ColumnNames.Nombre);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(ClientesMetadata.ColumnNames.Nombre, value))
+				if(base.SetSystemString(ClienteMetadata.ColumnNames.Nombre, value))
 				{
-					OnPropertyChanged(ClientesMetadata.PropertyNames.Nombre);
+					OnPropertyChanged(ClienteMetadata.PropertyNames.Nombre);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Clientes.Direccion
+		/// Maps to Cliente.DocumentType
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
-		virtual public System.String Direccion
+		virtual public System.String DocumentType
 		{
 			get
 			{
-				return base.GetSystemString(ClientesMetadata.ColumnNames.Direccion);
+				return base.GetSystemString(ClienteMetadata.ColumnNames.DocumentType);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(ClientesMetadata.ColumnNames.Direccion, value))
+				if(base.SetSystemString(ClienteMetadata.ColumnNames.DocumentType, value))
 				{
-					OnPropertyChanged(ClientesMetadata.PropertyNames.Direccion);
+					OnPropertyChanged(ClienteMetadata.PropertyNames.DocumentType);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Clientes.Telefono
+		/// Maps to Cliente.DocumentNo
+		/// </summary>
+		[DataMember(EmitDefaultValue=false)]
+		virtual public System.String DocumentNo
+		{
+			get
+			{
+				return base.GetSystemString(ClienteMetadata.ColumnNames.DocumentNo);
+			}
+			
+			set
+			{
+				if(base.SetSystemString(ClienteMetadata.ColumnNames.DocumentNo, value))
+				{
+					OnPropertyChanged(ClienteMetadata.PropertyNames.DocumentNo);
+				}
+			}
+		}		
+		
+		/// <summary>
+		/// Maps to Cliente.Telefono
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String Telefono
 		{
 			get
 			{
-				return base.GetSystemString(ClientesMetadata.ColumnNames.Telefono);
+				return base.GetSystemString(ClienteMetadata.ColumnNames.Telefono);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(ClientesMetadata.ColumnNames.Telefono, value))
+				if(base.SetSystemString(ClienteMetadata.ColumnNames.Telefono, value))
 				{
-					OnPropertyChanged(ClientesMetadata.PropertyNames.Telefono);
+					OnPropertyChanged(ClienteMetadata.PropertyNames.Telefono);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Clientes.Email
+		/// Maps to Cliente.Email
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String Email
 		{
 			get
 			{
-				return base.GetSystemString(ClientesMetadata.ColumnNames.Email);
+				return base.GetSystemString(ClienteMetadata.ColumnNames.Email);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(ClientesMetadata.ColumnNames.Email, value))
+				if(base.SetSystemString(ClienteMetadata.ColumnNames.Email, value))
 				{
-					OnPropertyChanged(ClientesMetadata.PropertyNames.Email);
+					OnPropertyChanged(ClienteMetadata.PropertyNames.Email);
+				}
+			}
+		}		
+		
+		/// <summary>
+		/// Maps to Cliente.Direccion
+		/// </summary>
+		[DataMember(EmitDefaultValue=false)]
+		virtual public System.String Direccion
+		{
+			get
+			{
+				return base.GetSystemString(ClienteMetadata.ColumnNames.Direccion);
+			}
+			
+			set
+			{
+				if(base.SetSystemString(ClienteMetadata.ColumnNames.Direccion, value))
+				{
+					OnPropertyChanged(ClienteMetadata.PropertyNames.Direccion);
+				}
+			}
+		}		
+		
+		/// <summary>
+		/// Maps to Cliente.Estatus
+		/// </summary>
+		[DataMember(EmitDefaultValue=false)]
+		virtual public System.Boolean? Estatus
+		{
+			get
+			{
+				return base.GetSystemBoolean(ClienteMetadata.ColumnNames.Estatus);
+			}
+			
+			set
+			{
+				if(base.SetSystemBoolean(ClienteMetadata.ColumnNames.Estatus, value))
+				{
+					OnPropertyChanged(ClienteMetadata.PropertyNames.Estatus);
 				}
 			}
 		}		
@@ -330,9 +390,12 @@ namespace BusinessObjectsRTM
 					{							
 						case "Id": this.str().Id = (string)value; break;							
 						case "Nombre": this.str().Nombre = (string)value; break;							
-						case "Direccion": this.str().Direccion = (string)value; break;							
+						case "DocumentType": this.str().DocumentType = (string)value; break;							
+						case "DocumentNo": this.str().DocumentNo = (string)value; break;							
 						case "Telefono": this.str().Telefono = (string)value; break;							
-						case "Email": this.str().Email = (string)value; break;
+						case "Email": this.str().Email = (string)value; break;							
+						case "Direccion": this.str().Direccion = (string)value; break;							
+						case "Estatus": this.str().Estatus = (string)value; break;
 					}
 				}
 				else
@@ -343,7 +406,14 @@ namespace BusinessObjectsRTM
 						
 							if (value == null || value is System.Int32)
 								this.Id = (System.Int32?)value;
-								OnPropertyChanged(ClientesMetadata.PropertyNames.Id);
+								OnPropertyChanged(ClienteMetadata.PropertyNames.Id);
+							break;
+						
+						case "Estatus":
+						
+							if (value == null || value is System.Boolean)
+								this.Estatus = (System.Boolean?)value;
+								OnPropertyChanged(ClienteMetadata.PropertyNames.Estatus);
 							break;
 					
 
@@ -373,7 +443,7 @@ namespace BusinessObjectsRTM
 
 		sealed public class esStrings
 		{
-			public esStrings(esClientes entity)
+			public esStrings(esCliente entity)
 			{
 				this.entity = entity;
 			}
@@ -409,18 +479,33 @@ namespace BusinessObjectsRTM
 				}
 			}
 				
-			public System.String Direccion
+			public System.String DocumentType
 			{
 				get
 				{
-					System.String data = entity.Direccion;
+					System.String data = entity.DocumentType;
 					return (data == null) ? String.Empty : Convert.ToString(data);
 				}
 
 				set
 				{
-					if (value == null || value.Length == 0) entity.Direccion = null;
-					else entity.Direccion = Convert.ToString(value);
+					if (value == null || value.Length == 0) entity.DocumentType = null;
+					else entity.DocumentType = Convert.ToString(value);
+				}
+			}
+				
+			public System.String DocumentNo
+			{
+				get
+				{
+					System.String data = entity.DocumentNo;
+					return (data == null) ? String.Empty : Convert.ToString(data);
+				}
+
+				set
+				{
+					if (value == null || value.Length == 0) entity.DocumentNo = null;
+					else entity.DocumentNo = Convert.ToString(value);
 				}
 			}
 				
@@ -453,9 +538,39 @@ namespace BusinessObjectsRTM
 					else entity.Email = Convert.ToString(value);
 				}
 			}
+				
+			public System.String Direccion
+			{
+				get
+				{
+					System.String data = entity.Direccion;
+					return (data == null) ? String.Empty : Convert.ToString(data);
+				}
+
+				set
+				{
+					if (value == null || value.Length == 0) entity.Direccion = null;
+					else entity.Direccion = Convert.ToString(value);
+				}
+			}
+				
+			public System.String Estatus
+			{
+				get
+				{
+					System.Boolean? data = entity.Estatus;
+					return (data == null) ? String.Empty : Convert.ToString(data);
+				}
+
+				set
+				{
+					if (value == null || value.Length == 0) entity.Estatus = null;
+					else entity.Estatus = Convert.ToBoolean(value);
+				}
+			}
 			
 
-			private esClientes entity;
+			private esCliente entity;
 		}
 		
 		[NonSerialized]
@@ -469,7 +584,7 @@ namespace BusinessObjectsRTM
 		{
 			get
 			{
-				return ClientesMetadata.Meta();
+				return ClienteMetadata.Meta();
 			}
 		}
 
@@ -477,13 +592,13 @@ namespace BusinessObjectsRTM
 		
 		#region Query Logic
 
-		public ClientesQuery Query
+		public ClienteQuery Query
 		{
 			get
 			{
 				if (this.query == null)
 				{
-					this.query = new ClientesQuery();
+					this.query = new ClienteQuery();
 					InitQuery(this.query);
 				}
 
@@ -491,14 +606,14 @@ namespace BusinessObjectsRTM
 			}
 		}
 
-		public bool Load(ClientesQuery query)
+		public bool Load(ClienteQuery query)
 		{
 			this.query = query;
 			InitQuery(this.query);
 			return this.Query.Load();
 		}
 		
-		protected void InitQuery(ClientesQuery query)
+		protected void InitQuery(ClienteQuery query)
 		{
 			query.OnLoadDelegate = this.OnQueryLoaded;
 			
@@ -511,26 +626,26 @@ namespace BusinessObjectsRTM
 		#endregion
 		
         [IgnoreDataMember]
-		private ClientesQuery query;		
+		private ClienteQuery query;		
 	}
 
 
 
 	[Serializable]
-	abstract public partial class esClientesCollection : esEntityCollection<Clientes>
+	abstract public partial class esClienteCollection : esEntityCollection<Cliente>
 	{
 		#region Housekeeping methods
 		override protected IMetadata Meta
 		{
 			get
 			{
-				return ClientesMetadata.Meta();
+				return ClienteMetadata.Meta();
 			}
 		}
 
 		protected override string GetCollectionName()
 		{
-			return "ClientesCollection";
+			return "ClienteCollection";
 		}
 
 		#endregion		
@@ -540,13 +655,13 @@ namespace BusinessObjectsRTM
 	#if (!WindowsCE)
 		[BrowsableAttribute(false)]
 	#endif
-		public ClientesQuery Query
+		public ClienteQuery Query
 		{
 			get
 			{
 				if (this.query == null)
 				{
-					this.query = new ClientesQuery();
+					this.query = new ClienteQuery();
 					InitQuery(this.query);
 				}
 
@@ -554,7 +669,7 @@ namespace BusinessObjectsRTM
 			}
 		}
 
-		public bool Load(ClientesQuery query)
+		public bool Load(ClienteQuery query)
 		{
 			this.query = query;
 			InitQuery(this.query);
@@ -565,13 +680,13 @@ namespace BusinessObjectsRTM
 		{
 			if (this.query == null)
 			{
-				this.query = new ClientesQuery();
+				this.query = new ClienteQuery();
 				this.InitQuery(query);
 			}
 			return this.query;
 		}
 
-		protected void InitQuery(ClientesQuery query)
+		protected void InitQuery(ClienteQuery query)
 		{
 			query.OnLoadDelegate = this.OnQueryLoaded;
 			
@@ -583,24 +698,24 @@ namespace BusinessObjectsRTM
 
 		protected override void HookupQuery(esDynamicQuery query)
 		{
-			this.InitQuery((ClientesQuery)query);
+			this.InitQuery((ClienteQuery)query);
 		}
 
 		#endregion
 		
-		private ClientesQuery query;
+		private ClienteQuery query;
 	}
 
 
 
 	[Serializable]
-	abstract public partial class esClientesQuery : esDynamicQuery
+	abstract public partial class esClienteQuery : esDynamicQuery
 	{
 		override protected IMetadata Meta
 		{
 			get
 			{
-				return ClientesMetadata.Meta();
+				return ClienteMetadata.Meta();
 			}
 		}	
 		
@@ -612,9 +727,12 @@ namespace BusinessObjectsRTM
             {
 				case "Id": return this.Id;
 				case "Nombre": return this.Nombre;
-				case "Direccion": return this.Direccion;
+				case "DocumentType": return this.DocumentType;
+				case "DocumentNo": return this.DocumentNo;
 				case "Telefono": return this.Telefono;
 				case "Email": return this.Email;
+				case "Direccion": return this.Direccion;
+				case "Estatus": return this.Estatus;
 
                 default: return null;
             }
@@ -626,27 +744,42 @@ namespace BusinessObjectsRTM
 
 		public esQueryItem Id
 		{
-			get { return new esQueryItem(this, ClientesMetadata.ColumnNames.Id, esSystemType.Int32); }
+			get { return new esQueryItem(this, ClienteMetadata.ColumnNames.Id, esSystemType.Int32); }
 		} 
 		
 		public esQueryItem Nombre
 		{
-			get { return new esQueryItem(this, ClientesMetadata.ColumnNames.Nombre, esSystemType.String); }
+			get { return new esQueryItem(this, ClienteMetadata.ColumnNames.Nombre, esSystemType.String); }
 		} 
 		
-		public esQueryItem Direccion
+		public esQueryItem DocumentType
 		{
-			get { return new esQueryItem(this, ClientesMetadata.ColumnNames.Direccion, esSystemType.String); }
+			get { return new esQueryItem(this, ClienteMetadata.ColumnNames.DocumentType, esSystemType.String); }
+		} 
+		
+		public esQueryItem DocumentNo
+		{
+			get { return new esQueryItem(this, ClienteMetadata.ColumnNames.DocumentNo, esSystemType.String); }
 		} 
 		
 		public esQueryItem Telefono
 		{
-			get { return new esQueryItem(this, ClientesMetadata.ColumnNames.Telefono, esSystemType.String); }
+			get { return new esQueryItem(this, ClienteMetadata.ColumnNames.Telefono, esSystemType.String); }
 		} 
 		
 		public esQueryItem Email
 		{
-			get { return new esQueryItem(this, ClientesMetadata.ColumnNames.Email, esSystemType.String); }
+			get { return new esQueryItem(this, ClienteMetadata.ColumnNames.Email, esSystemType.String); }
+		} 
+		
+		public esQueryItem Direccion
+		{
+			get { return new esQueryItem(this, ClienteMetadata.ColumnNames.Direccion, esSystemType.String); }
+		} 
+		
+		public esQueryItem Estatus
+		{
+			get { return new esQueryItem(this, ClienteMetadata.ColumnNames.Estatus, esSystemType.Boolean); }
 		} 
 		
 		#endregion
@@ -655,7 +788,7 @@ namespace BusinessObjectsRTM
 
 
 	
-	public partial class Clientes : esClientes
+	public partial class Cliente : esCliente
 	{
 
 		
@@ -666,45 +799,61 @@ namespace BusinessObjectsRTM
 
 
 	[Serializable]
-	public partial class ClientesMetadata : esMetadata, IMetadata
+	public partial class ClienteMetadata : esMetadata, IMetadata
 	{
 		#region Protected Constructor
-		protected ClientesMetadata()
+		protected ClienteMetadata()
 		{
 			m_columns = new esColumnMetadataCollection();
 			esColumnMetadata c;
 
-			c = new esColumnMetadata(ClientesMetadata.ColumnNames.Id, 0, typeof(System.Int32), esSystemType.Int32);
-			c.PropertyName = ClientesMetadata.PropertyNames.Id;
+			c = new esColumnMetadata(ClienteMetadata.ColumnNames.Id, 0, typeof(System.Int32), esSystemType.Int32);
+			c.PropertyName = ClienteMetadata.PropertyNames.Id;
 			c.IsInPrimaryKey = true;
 			c.IsAutoIncrement = true;
 			c.NumericPrecision = 10;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(ClientesMetadata.ColumnNames.Nombre, 1, typeof(System.String), esSystemType.String);
-			c.PropertyName = ClientesMetadata.PropertyNames.Nombre;
-			c.CharacterMaxLength = 150;
+			c = new esColumnMetadata(ClienteMetadata.ColumnNames.Nombre, 1, typeof(System.String), esSystemType.String);
+			c.PropertyName = ClienteMetadata.PropertyNames.Nombre;
+			c.CharacterMaxLength = 256;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(ClientesMetadata.ColumnNames.Direccion, 2, typeof(System.String), esSystemType.String);
-			c.PropertyName = ClientesMetadata.PropertyNames.Direccion;
-			c.CharacterMaxLength = 150;
+			c = new esColumnMetadata(ClienteMetadata.ColumnNames.DocumentType, 2, typeof(System.String), esSystemType.String);
+			c.PropertyName = ClienteMetadata.PropertyNames.DocumentType;
+			c.CharacterMaxLength = 3;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(ClientesMetadata.ColumnNames.Telefono, 3, typeof(System.String), esSystemType.String);
-			c.PropertyName = ClientesMetadata.PropertyNames.Telefono;
-			c.CharacterMaxLength = 23;
+			c = new esColumnMetadata(ClienteMetadata.ColumnNames.DocumentNo, 3, typeof(System.String), esSystemType.String);
+			c.PropertyName = ClienteMetadata.PropertyNames.DocumentNo;
+			c.CharacterMaxLength = 11;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(ClientesMetadata.ColumnNames.Email, 4, typeof(System.String), esSystemType.String);
-			c.PropertyName = ClientesMetadata.PropertyNames.Email;
-			c.CharacterMaxLength = 75;
+			c = new esColumnMetadata(ClienteMetadata.ColumnNames.Telefono, 4, typeof(System.String), esSystemType.String);
+			c.PropertyName = ClienteMetadata.PropertyNames.Telefono;
+			c.CharacterMaxLength = 27;
+			m_columns.Add(c);
+				
+			c = new esColumnMetadata(ClienteMetadata.ColumnNames.Email, 5, typeof(System.String), esSystemType.String);
+			c.PropertyName = ClienteMetadata.PropertyNames.Email;
+			c.CharacterMaxLength = 128;
+			m_columns.Add(c);
+				
+			c = new esColumnMetadata(ClienteMetadata.ColumnNames.Direccion, 6, typeof(System.String), esSystemType.String);
+			c.PropertyName = ClienteMetadata.PropertyNames.Direccion;
+			c.CharacterMaxLength = 512;
+			m_columns.Add(c);
+				
+			c = new esColumnMetadata(ClienteMetadata.ColumnNames.Estatus, 7, typeof(System.Boolean), esSystemType.Boolean);
+			c.PropertyName = ClienteMetadata.PropertyNames.Estatus;
+			c.HasDefault = true;
+			c.Default = @"((1))";
 			m_columns.Add(c);
 				
 		}
 		#endregion	
 	
-		static public ClientesMetadata Meta()
+		static public ClienteMetadata Meta()
 		{
 			return meta;
 		}	
@@ -729,9 +878,12 @@ namespace BusinessObjectsRTM
 		{ 
 			 public const string Id = "Id";
 			 public const string Nombre = "Nombre";
-			 public const string Direccion = "Direccion";
+			 public const string DocumentType = "DocumentType";
+			 public const string DocumentNo = "DocumentNo";
 			 public const string Telefono = "Telefono";
 			 public const string Email = "Email";
+			 public const string Direccion = "Direccion";
+			 public const string Estatus = "Estatus";
 		}
 		#endregion	
 		
@@ -740,9 +892,12 @@ namespace BusinessObjectsRTM
 		{ 
 			 public const string Id = "Id";
 			 public const string Nombre = "Nombre";
-			 public const string Direccion = "Direccion";
+			 public const string DocumentType = "DocumentType";
+			 public const string DocumentNo = "DocumentNo";
 			 public const string Telefono = "Telefono";
 			 public const string Email = "Email";
+			 public const string Direccion = "Direccion";
+			 public const string Estatus = "Estatus";
 		}
 		#endregion	
 
@@ -761,16 +916,16 @@ namespace BusinessObjectsRTM
 		static private int RegisterDelegateesDefault()
 		{
 			// This is only executed once per the life of the application
-			lock (typeof(ClientesMetadata))
+			lock (typeof(ClienteMetadata))
 			{
-				if(ClientesMetadata.mapDelegates == null)
+				if(ClienteMetadata.mapDelegates == null)
 				{
-					ClientesMetadata.mapDelegates = new Dictionary<string,MapToMeta>();
+					ClienteMetadata.mapDelegates = new Dictionary<string,MapToMeta>();
 				}
 				
-				if (ClientesMetadata.meta == null)
+				if (ClienteMetadata.meta == null)
 				{
-					ClientesMetadata.meta = new ClientesMetadata();
+					ClienteMetadata.meta = new ClienteMetadata();
 				}
 				
 				MapToMeta mapMethod = new MapToMeta(meta.esDefault);
@@ -789,20 +944,23 @@ namespace BusinessObjectsRTM
 
 				meta.AddTypeMap("Id", new esTypeMap("int", "System.Int32"));
 				meta.AddTypeMap("Nombre", new esTypeMap("nvarchar", "System.String"));
-				meta.AddTypeMap("Direccion", new esTypeMap("nvarchar", "System.String"));
+				meta.AddTypeMap("DocumentType", new esTypeMap("char", "System.String"));
+				meta.AddTypeMap("DocumentNo", new esTypeMap("nvarchar", "System.String"));
 				meta.AddTypeMap("Telefono", new esTypeMap("nvarchar", "System.String"));
-				meta.AddTypeMap("Email", new esTypeMap("nvarchar", "System.String"));			
+				meta.AddTypeMap("Email", new esTypeMap("nvarchar", "System.String"));
+				meta.AddTypeMap("Direccion", new esTypeMap("nvarchar", "System.String"));
+				meta.AddTypeMap("Estatus", new esTypeMap("bit", "System.Boolean"));			
 				
 				
 				
-				meta.Source = "Clientes";
-				meta.Destination = "Clientes";
+				meta.Source = "Cliente";
+				meta.Destination = "Cliente";
 				
-				meta.spInsert = "proc_ClientesInsert";				
-				meta.spUpdate = "proc_ClientesUpdate";		
-				meta.spDelete = "proc_ClientesDelete";
-				meta.spLoadAll = "proc_ClientesLoadAll";
-				meta.spLoadByPrimaryKey = "proc_ClientesLoadByPrimaryKey";
+				meta.spInsert = "proc_ClienteInsert";				
+				meta.spUpdate = "proc_ClienteUpdate";		
+				meta.spDelete = "proc_ClienteDelete";
+				meta.spLoadAll = "proc_ClienteLoadAll";
+				meta.spLoadByPrimaryKey = "proc_ClienteLoadByPrimaryKey";
 				
 				this.m_providerMetadataMaps["esDefault"] = meta;
 			}
@@ -812,7 +970,7 @@ namespace BusinessObjectsRTM
 
 		#endregion
 
-		static private ClientesMetadata meta;
+		static private ClienteMetadata meta;
 		static protected Dictionary<string, MapToMeta> mapDelegates;
 		static private int _esDefault = RegisterDelegateesDefault();
 	}

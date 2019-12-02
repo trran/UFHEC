@@ -57,8 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\ProductosController.cs" />
-    <Compile Include="Controller\CustomerController.cs" />
+    <Compile Include="Controller\ClienteController.cs" />
+    <Compile Include="Controller\ProductoController.cs" />
+    <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\OrdenesController.cs" />
     <Compile Include="CurrentUserInfo.cs" />

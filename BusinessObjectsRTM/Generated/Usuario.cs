@@ -8,7 +8,7 @@
 ===============================================================================
 EntitySpaces Version : 2012.1.0930.0
 EntitySpaces Driver  : SQL
-Date Generated       : 11/30/2019 3:20:27 PM
+Date Generated       : 12/1/2019 8:05:58 PM
 ===============================================================================
 */
 
@@ -32,15 +32,15 @@ using EntitySpaces.DynamicQuery;
 namespace BusinessObjectsRTM
 {
 	/// <summary>
-	/// Encapsulates the 'Customer' table
+	/// Encapsulates the 'Usuario' table
 	/// </summary>
 
     [DebuggerDisplay("Data = {Debug}")]
 	[Serializable]
 	[DataContract]
-	[KnownType(typeof(Customer))]	
-	[XmlType("Customer")]
-	public partial class Customer : esCustomer
+	[KnownType(typeof(Usuario))]	
+	[XmlType("Usuario")]
+	public partial class Usuario : esUsuario
 	{	
 		[DebuggerBrowsable(DebuggerBrowsableState.RootHidden | DebuggerBrowsableState.Never)]
 		protected override esEntityDebuggerView[] Debug
@@ -50,13 +50,13 @@ namespace BusinessObjectsRTM
 
 		override public esEntity CreateInstance()
 		{
-			return new Customer();
+			return new Usuario();
 		}
 		
 		#region Static Quick Access Methods
 		static public void Delete(System.Int32 id)
 		{
-			var obj = new Customer();
+			var obj = new Usuario();
 			obj.Id = id;
 			obj.AcceptChanges();
 			obj.MarkAsDeleted();
@@ -65,7 +65,7 @@ namespace BusinessObjectsRTM
 
 	    static public void Delete(System.Int32 id, esSqlAccessType sqlAccessType)
 		{
-			var obj = new Customer();
+			var obj = new Usuario();
 			obj.Id = id;
 			obj.AcceptChanges();
 			obj.MarkAsDeleted();
@@ -88,10 +88,10 @@ namespace BusinessObjectsRTM
     [DebuggerDisplay("Count = {Count}")]
 	[Serializable]
 	[CollectionDataContract]
-	[XmlType("CustomerCollection")]
-	public partial class CustomerCollection : esCustomerCollection, IEnumerable<Customer>
+	[XmlType("UsuarioCollection")]
+	public partial class UsuarioCollection : esUsuarioCollection, IEnumerable<Usuario>
 	{
-		public Customer FindByPrimaryKey(System.Int32 id)
+		public Usuario FindByPrimaryKey(System.Int32 id)
 		{
 			return this.SingleOrDefault(e => e.Id == id);
 		}
@@ -101,17 +101,17 @@ namespace BusinessObjectsRTM
 		#region WCF Service Class
 		
 		[DataContract]
-		[KnownType(typeof(Customer))]
-		public class CustomerCollectionWCFPacket : esCollectionWCFPacket<CustomerCollection>
+		[KnownType(typeof(Usuario))]
+		public class UsuarioCollectionWCFPacket : esCollectionWCFPacket<UsuarioCollection>
 		{
-			public static implicit operator CustomerCollection(CustomerCollectionWCFPacket packet)
+			public static implicit operator UsuarioCollection(UsuarioCollectionWCFPacket packet)
 			{
 				return packet.Collection;
 			}
 
-			public static implicit operator CustomerCollectionWCFPacket(CustomerCollection collection)
+			public static implicit operator UsuarioCollectionWCFPacket(UsuarioCollection collection)
 			{
-				return new CustomerCollectionWCFPacket() { Collection = collection };
+				return new UsuarioCollectionWCFPacket() { Collection = collection };
 			}
 		}
 		
@@ -128,16 +128,16 @@ namespace BusinessObjectsRTM
 
     [DebuggerDisplay("Query = {Parse()}")]
 	[Serializable]	
-	public partial class CustomerQuery : esCustomerQuery
+	public partial class UsuarioQuery : esUsuarioQuery
 	{
-		public CustomerQuery(string joinAlias)
+		public UsuarioQuery(string joinAlias)
 		{
 			this.es.JoinAlias = joinAlias;
 		}	
 
 		override protected string GetQueryName()
 		{
-			return "CustomerQuery";
+			return "UsuarioQuery";
 		}
 		
 		
@@ -148,14 +148,14 @@ namespace BusinessObjectsRTM
 	
 		#region Explicit Casts
 		
-		public static explicit operator string(CustomerQuery query)
+		public static explicit operator string(UsuarioQuery query)
 		{
-			return CustomerQuery.SerializeHelper.ToXml(query);
+			return UsuarioQuery.SerializeHelper.ToXml(query);
 		}
 
-		public static explicit operator CustomerQuery(string query)
+		public static explicit operator UsuarioQuery(string query)
 		{
-			return (CustomerQuery)CustomerQuery.SerializeHelper.FromXml(query, typeof(CustomerQuery));
+			return (UsuarioQuery)UsuarioQuery.SerializeHelper.FromXml(query, typeof(UsuarioQuery));
 		}
 		
 		#endregion		
@@ -163,9 +163,9 @@ namespace BusinessObjectsRTM
 
 	[DataContract]
 	[Serializable]
-	abstract public partial class esCustomer : esEntity
+	abstract public partial class esUsuario : esEntity
 	{
-		public esCustomer()
+		public esUsuario()
 		{
 
 		}
@@ -189,7 +189,7 @@ namespace BusinessObjectsRTM
 
 		private bool LoadByPrimaryKeyDynamic(System.Int32 id)
 		{
-			CustomerQuery query = new CustomerQuery();
+			UsuarioQuery query = new UsuarioQuery();
 			query.Where(query.Id == id);
 			return this.Load(query);
 		}
@@ -207,281 +207,281 @@ namespace BusinessObjectsRTM
 		
 		
 		/// <summary>
-		/// Maps to Customer.Id
+		/// Maps to Usuario.Id
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.Int32? Id
 		{
 			get
 			{
-				return base.GetSystemInt32(CustomerMetadata.ColumnNames.Id);
+				return base.GetSystemInt32(UsuarioMetadata.ColumnNames.Id);
 			}
 			
 			set
 			{
-				if(base.SetSystemInt32(CustomerMetadata.ColumnNames.Id, value))
+				if(base.SetSystemInt32(UsuarioMetadata.ColumnNames.Id, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.Id);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.Id);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.FirstName
+		/// Maps to Usuario.FirstName
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String FirstName
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.FirstName);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.FirstName);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.FirstName, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.FirstName, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.FirstName);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.FirstName);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.LastName
+		/// Maps to Usuario.LastName
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String LastName
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.LastName);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.LastName);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.LastName, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.LastName, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.LastName);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.LastName);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.BirthDate
+		/// Maps to Usuario.BirthDate
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.DateTime? BirthDate
 		{
 			get
 			{
-				return base.GetSystemDateTime(CustomerMetadata.ColumnNames.BirthDate);
+				return base.GetSystemDateTime(UsuarioMetadata.ColumnNames.BirthDate);
 			}
 			
 			set
 			{
-				if(base.SetSystemDateTime(CustomerMetadata.ColumnNames.BirthDate, value))
+				if(base.SetSystemDateTime(UsuarioMetadata.ColumnNames.BirthDate, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.BirthDate);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.BirthDate);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.Address
+		/// Maps to Usuario.Address
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String Address
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.Address);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.Address);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.Address, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.Address, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.Address);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.Address);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.City
+		/// Maps to Usuario.City
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String City
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.City);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.City);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.City, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.City, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.City);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.City);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.ZipCode
+		/// Maps to Usuario.ZipCode
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String ZipCode
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.ZipCode);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.ZipCode);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.ZipCode, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.ZipCode, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.ZipCode);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.ZipCode);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.Position
+		/// Maps to Usuario.Position
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String Position
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.Position);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.Position);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.Position, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.Position, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.Position);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.Position);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.Phone
+		/// Maps to Usuario.Phone
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String Phone
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.Phone);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.Phone);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.Phone, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.Phone, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.Phone);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.Phone);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.Notes
+		/// Maps to Usuario.Notes
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String Notes
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.Notes);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.Notes);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.Notes, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.Notes, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.Notes);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.Notes);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.Username
+		/// Maps to Usuario.Username
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String Username
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.Username);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.Username);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.Username, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.Username, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.Username);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.Username);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.Password
+		/// Maps to Usuario.Password
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String Password
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.Password);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.Password);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.Password, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.Password, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.Password);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.Password);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.Avatar
+		/// Maps to Usuario.Avatar
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.Byte[] Avatar
 		{
 			get
 			{
-				return base.GetSystemByteArray(CustomerMetadata.ColumnNames.Avatar);
+				return base.GetSystemByteArray(UsuarioMetadata.ColumnNames.Avatar);
 			}
 			
 			set
 			{
-				if(base.SetSystemByteArray(CustomerMetadata.ColumnNames.Avatar, value))
+				if(base.SetSystemByteArray(UsuarioMetadata.ColumnNames.Avatar, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.Avatar);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.Avatar);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Customer.FullName
+		/// Maps to Usuario.FullName
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
 		virtual public System.String FullName
 		{
 			get
 			{
-				return base.GetSystemString(CustomerMetadata.ColumnNames.FullName);
+				return base.GetSystemString(UsuarioMetadata.ColumnNames.FullName);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(CustomerMetadata.ColumnNames.FullName, value))
+				if(base.SetSystemString(UsuarioMetadata.ColumnNames.FullName, value))
 				{
-					OnPropertyChanged(CustomerMetadata.PropertyNames.FullName);
+					OnPropertyChanged(UsuarioMetadata.PropertyNames.FullName);
 				}
 			}
 		}		
@@ -531,21 +531,21 @@ namespace BusinessObjectsRTM
 						
 							if (value == null || value is System.Int32)
 								this.Id = (System.Int32?)value;
-								OnPropertyChanged(CustomerMetadata.PropertyNames.Id);
+								OnPropertyChanged(UsuarioMetadata.PropertyNames.Id);
 							break;
 						
 						case "BirthDate":
 						
 							if (value == null || value is System.DateTime)
 								this.BirthDate = (System.DateTime?)value;
-								OnPropertyChanged(CustomerMetadata.PropertyNames.BirthDate);
+								OnPropertyChanged(UsuarioMetadata.PropertyNames.BirthDate);
 							break;
 						
 						case "Avatar":
 						
 							if (value == null || value is System.Byte[])
 								this.Avatar = (System.Byte[])value;
-								OnPropertyChanged(CustomerMetadata.PropertyNames.Avatar);
+								OnPropertyChanged(UsuarioMetadata.PropertyNames.Avatar);
 							break;
 					
 
@@ -575,7 +575,7 @@ namespace BusinessObjectsRTM
 
 		sealed public class esStrings
 		{
-			public esStrings(esCustomer entity)
+			public esStrings(esUsuario entity)
 			{
 				this.entity = entity;
 			}
@@ -777,7 +777,7 @@ namespace BusinessObjectsRTM
 			}
 			
 
-			private esCustomer entity;
+			private esUsuario entity;
 		}
 		
 		[NonSerialized]
@@ -791,7 +791,7 @@ namespace BusinessObjectsRTM
 		{
 			get
 			{
-				return CustomerMetadata.Meta();
+				return UsuarioMetadata.Meta();
 			}
 		}
 
@@ -799,13 +799,13 @@ namespace BusinessObjectsRTM
 		
 		#region Query Logic
 
-		public CustomerQuery Query
+		public UsuarioQuery Query
 		{
 			get
 			{
 				if (this.query == null)
 				{
-					this.query = new CustomerQuery();
+					this.query = new UsuarioQuery();
 					InitQuery(this.query);
 				}
 
@@ -813,14 +813,14 @@ namespace BusinessObjectsRTM
 			}
 		}
 
-		public bool Load(CustomerQuery query)
+		public bool Load(UsuarioQuery query)
 		{
 			this.query = query;
 			InitQuery(this.query);
 			return this.Query.Load();
 		}
 		
-		protected void InitQuery(CustomerQuery query)
+		protected void InitQuery(UsuarioQuery query)
 		{
 			query.OnLoadDelegate = this.OnQueryLoaded;
 			
@@ -833,26 +833,26 @@ namespace BusinessObjectsRTM
 		#endregion
 		
         [IgnoreDataMember]
-		private CustomerQuery query;		
+		private UsuarioQuery query;		
 	}
 
 
 
 	[Serializable]
-	abstract public partial class esCustomerCollection : esEntityCollection<Customer>
+	abstract public partial class esUsuarioCollection : esEntityCollection<Usuario>
 	{
 		#region Housekeeping methods
 		override protected IMetadata Meta
 		{
 			get
 			{
-				return CustomerMetadata.Meta();
+				return UsuarioMetadata.Meta();
 			}
 		}
 
 		protected override string GetCollectionName()
 		{
-			return "CustomerCollection";
+			return "UsuarioCollection";
 		}
 
 		#endregion		
@@ -862,13 +862,13 @@ namespace BusinessObjectsRTM
 	#if (!WindowsCE)
 		[BrowsableAttribute(false)]
 	#endif
-		public CustomerQuery Query
+		public UsuarioQuery Query
 		{
 			get
 			{
 				if (this.query == null)
 				{
-					this.query = new CustomerQuery();
+					this.query = new UsuarioQuery();
 					InitQuery(this.query);
 				}
 
@@ -876,7 +876,7 @@ namespace BusinessObjectsRTM
 			}
 		}
 
-		public bool Load(CustomerQuery query)
+		public bool Load(UsuarioQuery query)
 		{
 			this.query = query;
 			InitQuery(this.query);
@@ -887,13 +887,13 @@ namespace BusinessObjectsRTM
 		{
 			if (this.query == null)
 			{
-				this.query = new CustomerQuery();
+				this.query = new UsuarioQuery();
 				this.InitQuery(query);
 			}
 			return this.query;
 		}
 
-		protected void InitQuery(CustomerQuery query)
+		protected void InitQuery(UsuarioQuery query)
 		{
 			query.OnLoadDelegate = this.OnQueryLoaded;
 			
@@ -905,24 +905,24 @@ namespace BusinessObjectsRTM
 
 		protected override void HookupQuery(esDynamicQuery query)
 		{
-			this.InitQuery((CustomerQuery)query);
+			this.InitQuery((UsuarioQuery)query);
 		}
 
 		#endregion
 		
-		private CustomerQuery query;
+		private UsuarioQuery query;
 	}
 
 
 
 	[Serializable]
-	abstract public partial class esCustomerQuery : esDynamicQuery
+	abstract public partial class esUsuarioQuery : esDynamicQuery
 	{
 		override protected IMetadata Meta
 		{
 			get
 			{
-				return CustomerMetadata.Meta();
+				return UsuarioMetadata.Meta();
 			}
 		}	
 		
@@ -957,72 +957,72 @@ namespace BusinessObjectsRTM
 
 		public esQueryItem Id
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.Id, esSystemType.Int32); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.Id, esSystemType.Int32); }
 		} 
 		
 		public esQueryItem FirstName
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.FirstName, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.FirstName, esSystemType.String); }
 		} 
 		
 		public esQueryItem LastName
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.LastName, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.LastName, esSystemType.String); }
 		} 
 		
 		public esQueryItem BirthDate
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.BirthDate, esSystemType.DateTime); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.BirthDate, esSystemType.DateTime); }
 		} 
 		
 		public esQueryItem Address
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.Address, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.Address, esSystemType.String); }
 		} 
 		
 		public esQueryItem City
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.City, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.City, esSystemType.String); }
 		} 
 		
 		public esQueryItem ZipCode
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.ZipCode, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.ZipCode, esSystemType.String); }
 		} 
 		
 		public esQueryItem Position
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.Position, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.Position, esSystemType.String); }
 		} 
 		
 		public esQueryItem Phone
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.Phone, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.Phone, esSystemType.String); }
 		} 
 		
 		public esQueryItem Notes
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.Notes, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.Notes, esSystemType.String); }
 		} 
 		
 		public esQueryItem Username
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.Username, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.Username, esSystemType.String); }
 		} 
 		
 		public esQueryItem Password
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.Password, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.Password, esSystemType.String); }
 		} 
 		
 		public esQueryItem Avatar
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.Avatar, esSystemType.ByteArray); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.Avatar, esSystemType.ByteArray); }
 		} 
 		
 		public esQueryItem FullName
 		{
-			get { return new esQueryItem(this, CustomerMetadata.ColumnNames.FullName, esSystemType.String); }
+			get { return new esQueryItem(this, UsuarioMetadata.ColumnNames.FullName, esSystemType.String); }
 		} 
 		
 		#endregion
@@ -1031,7 +1031,7 @@ namespace BusinessObjectsRTM
 
 
 	
-	public partial class Customer : esCustomer
+	public partial class Usuario : esUsuario
 	{
 
 		
@@ -1042,90 +1042,90 @@ namespace BusinessObjectsRTM
 
 
 	[Serializable]
-	public partial class CustomerMetadata : esMetadata, IMetadata
+	public partial class UsuarioMetadata : esMetadata, IMetadata
 	{
 		#region Protected Constructor
-		protected CustomerMetadata()
+		protected UsuarioMetadata()
 		{
 			m_columns = new esColumnMetadataCollection();
 			esColumnMetadata c;
 
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.Id, 0, typeof(System.Int32), esSystemType.Int32);
-			c.PropertyName = CustomerMetadata.PropertyNames.Id;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.Id, 0, typeof(System.Int32), esSystemType.Int32);
+			c.PropertyName = UsuarioMetadata.PropertyNames.Id;
 			c.IsInPrimaryKey = true;
 			c.IsAutoIncrement = true;
 			c.NumericPrecision = 10;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.FirstName, 1, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.FirstName;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.FirstName, 1, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.FirstName;
 			c.CharacterMaxLength = 50;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.LastName, 2, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.LastName;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.LastName, 2, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.LastName;
 			c.CharacterMaxLength = 100;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.BirthDate, 3, typeof(System.DateTime), esSystemType.DateTime);
-			c.PropertyName = CustomerMetadata.PropertyNames.BirthDate;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.BirthDate, 3, typeof(System.DateTime), esSystemType.DateTime);
+			c.PropertyName = UsuarioMetadata.PropertyNames.BirthDate;
 			c.CharacterMaxLength = 10;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.Address, 4, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.Address;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.Address, 4, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.Address;
 			c.CharacterMaxLength = 256;
 			c.IsNullable = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.City, 5, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.City;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.City, 5, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.City;
 			c.CharacterMaxLength = 50;
 			c.IsNullable = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.ZipCode, 6, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.ZipCode;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.ZipCode, 6, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.ZipCode;
 			c.CharacterMaxLength = 50;
 			c.IsNullable = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.Position, 7, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.Position;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.Position, 7, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.Position;
 			c.CharacterMaxLength = 100;
 			c.IsNullable = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.Phone, 8, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.Phone;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.Phone, 8, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.Phone;
 			c.CharacterMaxLength = 23;
 			c.IsNullable = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.Notes, 9, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.Notes;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.Notes, 9, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.Notes;
 			c.CharacterMaxLength = 512;
 			c.IsNullable = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.Username, 10, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.Username;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.Username, 10, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.Username;
 			c.CharacterMaxLength = 50;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.Password, 11, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.Password;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.Password, 11, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.Password;
 			c.CharacterMaxLength = 50;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.Avatar, 12, typeof(System.Byte[]), esSystemType.ByteArray);
-			c.PropertyName = CustomerMetadata.PropertyNames.Avatar;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.Avatar, 12, typeof(System.Byte[]), esSystemType.ByteArray);
+			c.PropertyName = UsuarioMetadata.PropertyNames.Avatar;
 			c.CharacterMaxLength = 2147483647;
 			c.IsNullable = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(CustomerMetadata.ColumnNames.FullName, 13, typeof(System.String), esSystemType.String);
-			c.PropertyName = CustomerMetadata.PropertyNames.FullName;
+			c = new esColumnMetadata(UsuarioMetadata.ColumnNames.FullName, 13, typeof(System.String), esSystemType.String);
+			c.PropertyName = UsuarioMetadata.PropertyNames.FullName;
 			c.CharacterMaxLength = 151;
 			c.IsComputed = true;
 			m_columns.Add(c);
@@ -1133,7 +1133,7 @@ namespace BusinessObjectsRTM
 		}
 		#endregion	
 	
-		static public CustomerMetadata Meta()
+		static public UsuarioMetadata Meta()
 		{
 			return meta;
 		}	
@@ -1208,16 +1208,16 @@ namespace BusinessObjectsRTM
 		static private int RegisterDelegateesDefault()
 		{
 			// This is only executed once per the life of the application
-			lock (typeof(CustomerMetadata))
+			lock (typeof(UsuarioMetadata))
 			{
-				if(CustomerMetadata.mapDelegates == null)
+				if(UsuarioMetadata.mapDelegates == null)
 				{
-					CustomerMetadata.mapDelegates = new Dictionary<string,MapToMeta>();
+					UsuarioMetadata.mapDelegates = new Dictionary<string,MapToMeta>();
 				}
 				
-				if (CustomerMetadata.meta == null)
+				if (UsuarioMetadata.meta == null)
 				{
-					CustomerMetadata.meta = new CustomerMetadata();
+					UsuarioMetadata.meta = new UsuarioMetadata();
 				}
 				
 				MapToMeta mapMethod = new MapToMeta(meta.esDefault);
@@ -1251,14 +1251,14 @@ namespace BusinessObjectsRTM
 				
 				
 				
-				meta.Source = "Customer";
-				meta.Destination = "Customer";
+				meta.Source = "Usuario";
+				meta.Destination = "Usuario";
 				
-				meta.spInsert = "proc_CustomerInsert";				
-				meta.spUpdate = "proc_CustomerUpdate";		
-				meta.spDelete = "proc_CustomerDelete";
-				meta.spLoadAll = "proc_CustomerLoadAll";
-				meta.spLoadByPrimaryKey = "proc_CustomerLoadByPrimaryKey";
+				meta.spInsert = "proc_UsuarioInsert";				
+				meta.spUpdate = "proc_UsuarioUpdate";		
+				meta.spDelete = "proc_UsuarioDelete";
+				meta.spLoadAll = "proc_UsuarioLoadAll";
+				meta.spLoadByPrimaryKey = "proc_UsuarioLoadByPrimaryKey";
 				
 				this.m_providerMetadataMaps["esDefault"] = meta;
 			}
@@ -1268,7 +1268,7 @@ namespace BusinessObjectsRTM
 
 		#endregion
 
-		static private CustomerMetadata meta;
+		static private UsuarioMetadata meta;
 		static protected Dictionary<string, MapToMeta> mapDelegates;
 		static private int _esDefault = RegisterDelegateesDefault();
 	}

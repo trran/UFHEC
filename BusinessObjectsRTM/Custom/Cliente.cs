@@ -7,7 +7,7 @@
 ===============================================================================
 EntitySpaces Version : 2012.1.0930.0
 EntitySpaces Driver  : SQL
-Date Generated       : 16/11/2019 02:05:40 a.m.
+Date Generated       : 12/1/2019 8:31:30 PM
 ===============================================================================
 */
 
@@ -19,9 +19,9 @@ using EntitySpaces.DynamicQuery;
 
 namespace BusinessObjectsRTM
 {
-	public partial class Clientes : esClientes
+	public partial class Cliente : esCliente
 	{
-		public Clientes()
+		public Cliente()
 		{
 		
 		}

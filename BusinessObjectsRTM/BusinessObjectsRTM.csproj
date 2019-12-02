@@ -59,12 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Custom\Clientes.cs" />
-    <Compile Include="Custom\ClientesCollection.cs" />
-    <Compile Include="Custom\ClientesQuery.cs" />
-    <Compile Include="Custom\Customer.cs" />
-    <Compile Include="Custom\CustomerCollection.cs" />
-    <Compile Include="Custom\CustomerQuery.cs" />
+    <Compile Include="Custom\Cliente.cs" />
+    <Compile Include="Custom\ClienteCollection.cs" />
+    <Compile Include="Custom\ClienteQuery.cs" />
     <Compile Include="Custom\Ordenes.cs" />
     <Compile Include="Custom\OrdenesCollection.cs" />
     <Compile Include="Custom\OrdenesDetalle.cs" />
@@ -74,13 +71,16 @@
     <Compile Include="Custom\Productos.cs" />
     <Compile Include="Custom\ProductosCollection.cs" />
     <Compile Include="Custom\ProductosQuery.cs" />
-    <Compile Include="Generated\Clientes.cs" />
-    <Compile Include="Generated\Customer.cs" />
+    <Compile Include="Custom\Usuario.cs" />
+    <Compile Include="Custom\UsuarioCollection.cs" />
+    <Compile Include="Custom\UsuarioQuery.cs" />
+    <Compile Include="Generated\Cliente.cs" />
     <Compile Include="Generated\Ordenes.cs" />
     <Compile Include="Generated\OrdenesDetalle.cs" />
     <Compile Include="Generated\Productos.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

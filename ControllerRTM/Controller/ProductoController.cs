@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace ControllerRTM.Controller
 {
-    public class ProductosController : IController
+    public class ProductoController : IController
     {
-        private ProductosController()
+        private ProductoController()
         {
 
         }
 
         private Productos producto = new Productos();
         private readonly string _currentUsername;
-        public ProductosController(string currentUsername)
+        public ProductoController(string currentUsername)
         {
             _currentUsername = currentUsername;
         }

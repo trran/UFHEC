@@ -1,6 +1,5 @@
 ﻿using ControllerRTM;
 using ControllerRTM.Controller;
-using ControllerRTM.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +12,12 @@ using System.Windows.Forms;
 
 namespace RTM.Forms
 {
-  public partial class FormProducto : Form, IController
+  public partial class FormCliente : Form
   {
-    private readonly ProductoController controller = new ProductoController(CurrentUserInfo.Username);
-    private int productoId;
-    public FormProducto()
+    private readonly ClienteController controller = new ClienteController(CurrentUserInfo.Username);
+    private int clienteId;
+    
+    public FormCliente()
     {
       InitializeComponent();
       toolStrip1_ItemClicked(null, new ToolStripItemClickedEventArgs(toolStripButtonUndo));
@@ -94,21 +94,24 @@ namespace RTM.Forms
     {
       bool habilitar = toolBarState.Name != toolStripButtonUndo.Name;
 
-      textBoxDescripcion.Enabled = habilitar;
-      metroComboBoxUnidadMedida.Enabled = habilitar;
+      textBoxNombre.Enabled = habilitar;
+      metroComboBoxTipoDocumento.Enabled = habilitar;      
+      textBoxDocumento.Enabled = habilitar;
+      textBoxTelefono.Enabled = habilitar;
+      textBoxEmail.Enabled = habilitar;
+      textBoxAddress.Enabled = habilitar;
       metroCheckBoxEstatus.Enabled = habilitar;
-      numericUpDownItbis.Enabled = habilitar;
-      numericUpDownPrecio.Enabled = habilitar;
-      numericUpDownQty.Enabled = habilitar;
     }
 
-    private void clearControls() {
-      productoId = 0;
-      textBoxDescripcion.Clear();
-      metroComboBoxUnidadMedida.SelectedItem = null;
-      numericUpDownPrecio.Value = 0;
-      numericUpDownItbis.Value = 0;
-      numericUpDownQty.Value = 0;
+    private void clearControls()
+    {
+      clienteId = 0;
+      textBoxNombre.Clear();
+      metroComboBoxTipoDocumento.SelectedItem = null;
+      textBoxDocumento.Clear();
+      textBoxEmail.Clear();
+      textBoxTelefono.Clear();
+      textBoxAddress.Clear();
       metroCheckBoxEstatus.Checked = true;
     }
 
@@ -151,23 +154,25 @@ namespace RTM.Forms
     public void ScatterEntityValues()
     {
       controller.ScatterEntityValues();
-      productoId = controller.Id;
-      textBoxDescripcion.Text = controller.Nombre;
-      metroComboBoxUnidadMedida.SelectedItem = controller.IdUnidad;
-      numericUpDownPrecio.Value = controller.Precio;
-      numericUpDownQty.Value = controller.Qty;
-      numericUpDownItbis.Value = controller.Itbis;
+      clienteId = controller.Id;
+      textBoxNombre.Text = controller.Nombre;
+      metroComboBoxTipoDocumento.SelectedItem = controller.DocumentType;
+      textBoxDocumento.Text = controller.DocumentNo;
+      textBoxTelefono.Text = controller.Telefono;
+      textBoxEmail.Text = controller.Email;
+      textBoxAddress.Text = controller.Direccion;
       metroCheckBoxEstatus.Checked = controller.Estatus;
     }
 
     public void GattherEntityValues()
     {
-      controller.Id = productoId;
-      controller.Nombre = textBoxDescripcion.Text;
-      controller.IdUnidad = metroComboBoxUnidadMedida.SelectedItem != null ? metroComboBoxUnidadMedida.SelectedItem.ToString() : string.Empty;
-      controller.Precio = numericUpDownPrecio.Value;
-      controller.Qty = numericUpDownQty.Value;
-      controller.Itbis = numericUpDownItbis.Value;
+      controller.Id = clienteId;
+      controller.Nombre = textBoxNombre.Text;
+      controller.DocumentType = metroComboBoxTipoDocumento.SelectedItem.ToString();
+      controller.DocumentNo = textBoxDocumento.Text;
+      controller.Telefono = textBoxTelefono.Text;
+      controller.Email = textBoxEmail.Text;
+      controller.Direccion = textBoxAddress.Text;
       controller.Estatus = metroCheckBoxEstatus.Checked;
       controller.GattherEntityValues();
     }

@@ -14,7 +14,7 @@ namespace ControllerRTM.Controller
     {
       bool isValid = false;
 
-      CustomerQuery entity = new CustomerQuery();
+      UsuarioQuery entity = new UsuarioQuery();
       entity.Select(entity.Id, entity.FirstName, entity.LastName, entity.Username);
       entity.Where(entity.Username != string.Empty && entity.Password != string.Empty && entity.Username == userName && entity.Password == password);
       entity.es.Top = 1;
@@ -22,10 +22,10 @@ namespace ControllerRTM.Controller
 
       if (isValid = dt.Rows.Count > 0)
       {
-        CurrentUserInfo.Id = Convert.ToInt32(dt.Rows[0][CustomerMetadata.ColumnNames.Id]);
-        CurrentUserInfo.FirstName = dt.Rows[0][CustomerMetadata.ColumnNames.FirstName].ToString();
-        CurrentUserInfo.LastName = dt.Rows[0][CustomerMetadata.ColumnNames.LastName].ToString();
-        CurrentUserInfo.Username = dt.Rows[0][CustomerMetadata.ColumnNames.Username].ToString();
+        CurrentUserInfo.Id = Convert.ToInt32(dt.Rows[0][UsuarioMetadata.ColumnNames.Id]);
+        CurrentUserInfo.FirstName = dt.Rows[0][UsuarioMetadata.ColumnNames.FirstName].ToString();
+        CurrentUserInfo.LastName = dt.Rows[0][UsuarioMetadata.ColumnNames.LastName].ToString();
+        CurrentUserInfo.Username = dt.Rows[0][UsuarioMetadata.ColumnNames.Username].ToString();
       }
 
       return isValid;

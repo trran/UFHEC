@@ -28,7 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProducto));
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCliente));
       this.toolStrip1 = new System.Windows.Forms.ToolStrip();
       this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
       this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
