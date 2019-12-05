@@ -62,11 +62,11 @@
     <Compile Include="Custom\Cliente.cs" />
     <Compile Include="Custom\ClienteCollection.cs" />
     <Compile Include="Custom\ClienteQuery.cs" />
+    <Compile Include="Custom\OrdenDetalle.cs" />
+    <Compile Include="Custom\OrdenDetalleCollection.cs" />
+    <Compile Include="Custom\OrdenDetalleQuery.cs" />
     <Compile Include="Custom\Ordenes.cs" />
     <Compile Include="Custom\OrdenesCollection.cs" />
-    <Compile Include="Custom\OrdenesDetalle.cs" />
-    <Compile Include="Custom\OrdenesDetalleCollection.cs" />
-    <Compile Include="Custom\OrdenesDetalleQuery.cs" />
     <Compile Include="Custom\OrdenesQuery.cs" />
     <Compile Include="Custom\Productos.cs" />
     <Compile Include="Custom\ProductosCollection.cs" />
@@ -75,8 +75,8 @@
     <Compile Include="Custom\UsuarioCollection.cs" />
     <Compile Include="Custom\UsuarioQuery.cs" />
     <Compile Include="Generated\Cliente.cs" />
+    <Compile Include="Generated\OrdenDetalle.cs" />
     <Compile Include="Generated\Ordenes.cs" />
-    <Compile Include="Generated\OrdenesDetalle.cs" />
     <Compile Include="Generated\Productos.cs">
       <SubType>Code</SubType>
     </Compile>

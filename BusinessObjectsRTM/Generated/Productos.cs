@@ -8,7 +8,7 @@
 ===============================================================================
 EntitySpaces Version : 2012.1.0930.0
 EntitySpaces Driver  : SQL
-Date Generated       : 11/30/2019 4:44:52 PM
+Date Generated       : 12/4/2019 10:16:55 PM
 ===============================================================================
 */
 
@@ -770,7 +770,141 @@ namespace BusinessObjectsRTM
 	public partial class Productos : esProductos
 	{
 
+		#region OrdenDetalleCollectionByProductoId - Zero To Many
 		
+		static public esPrefetchMap Prefetch_OrdenDetalleCollectionByProductoId
+		{
+			get
+			{
+				esPrefetchMap map = new esPrefetchMap();
+				map.PrefetchDelegate = BusinessObjectsRTM.Productos.OrdenDetalleCollectionByProductoId_Delegate;
+				map.PropertyName = "OrdenDetalleCollectionByProductoId";
+				map.MyColumnName = "ProductoId";
+				map.ParentColumnName = "Id";
+				map.IsMultiPartKey = false;
+				return map;
+			}
+		}		
+		
+		static private void OrdenDetalleCollectionByProductoId_Delegate(esPrefetchParameters data)
+		{
+			ProductosQuery parent = new ProductosQuery(data.NextAlias());
+
+			OrdenDetalleQuery me = data.You != null ? data.You as OrdenDetalleQuery : new OrdenDetalleQuery(data.NextAlias());
+
+			if (data.Root == null)
+			{
+				data.Root = me;
+			}
+			
+			data.Root.InnerJoin(parent).On(parent.Id == me.ProductoId);
+
+			data.You = parent;
+		}			
+		
+		/// <summary>
+		/// Zero to Many
+		/// Foreign Key Name - FK_OrdenDetalle_Productos
+		/// </summary>
+
+		[XmlIgnore]
+		public OrdenDetalleCollection OrdenDetalleCollectionByProductoId
+		{
+			get
+			{
+				if(this._OrdenDetalleCollectionByProductoId == null)
+				{
+					this._OrdenDetalleCollectionByProductoId = new OrdenDetalleCollection();
+					this._OrdenDetalleCollectionByProductoId.es.Connection.Name = this.es.Connection.Name;
+					this.SetPostSave("OrdenDetalleCollectionByProductoId", this._OrdenDetalleCollectionByProductoId);
+				
+					if (this.Id != null)
+					{
+						if (!this.es.IsLazyLoadDisabled)
+						{
+							this._OrdenDetalleCollectionByProductoId.Query.Where(this._OrdenDetalleCollectionByProductoId.Query.ProductoId == this.Id);
+							this._OrdenDetalleCollectionByProductoId.Query.Load();
+						}
+
+						// Auto-hookup Foreign Keys
+						this._OrdenDetalleCollectionByProductoId.fks.Add(OrdenDetalleMetadata.ColumnNames.ProductoId, this.Id);
+					}
+				}
+
+				return this._OrdenDetalleCollectionByProductoId;
+			}
+			
+			set 
+			{ 
+				if (value != null) throw new Exception("'value' Must be null"); 
+			 
+				if (this._OrdenDetalleCollectionByProductoId != null) 
+				{ 
+					this.RemovePostSave("OrdenDetalleCollectionByProductoId"); 
+					this._OrdenDetalleCollectionByProductoId = null;
+					
+				} 
+			} 			
+		}
+			
+		
+		private OrdenDetalleCollection _OrdenDetalleCollectionByProductoId;
+		#endregion
+
+		
+		protected override esEntityCollectionBase CreateCollectionForPrefetch(string name)
+		{
+			esEntityCollectionBase coll = null;
+
+			switch (name)
+			{
+				case "OrdenDetalleCollectionByProductoId":
+					coll = this.OrdenDetalleCollectionByProductoId;
+					break;	
+			}
+
+			return coll;
+		}		
+		/// <summary>
+		/// Used internally by the entity's hierarchical properties.
+		/// </summary>
+		protected override List<esPropertyDescriptor> GetHierarchicalProperties()
+		{
+			List<esPropertyDescriptor> props = new List<esPropertyDescriptor>();
+			
+			props.Add(new esPropertyDescriptor(this, "OrdenDetalleCollectionByProductoId", typeof(OrdenDetalleCollection), new OrdenDetalle()));
+		
+			return props;
+		}
+		
+		/// <summary>
+		/// Called by ApplyPostSaveKeys 
+		/// </summary>
+		/// <param name="coll">The collection to enumerate over</param>
+		/// <param name="key">"The column name</param>
+		/// <param name="value">The column value</param>
+		private void Apply(esEntityCollectionBase coll, string key, object value)
+		{
+			foreach (esEntity obj in coll)
+			{
+				if (obj.es.IsAdded)
+				{
+					obj.SetProperty(key, value);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Used internally for retrieving AutoIncrementing keys
+		/// during hierarchical PostSave.
+		/// </summary>
+		protected override void ApplyPostSaveKeys()
+		{
+			if(this._OrdenDetalleCollectionByProductoId != null)
+			{
+				Apply(this._OrdenDetalleCollectionByProductoId, "ProductoId", this.Id);
+			}
+		}
 		
 	}
 	

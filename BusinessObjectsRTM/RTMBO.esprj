@@ -5,38 +5,41 @@
       <RecordedTemplate Name="Generated - Classes Master (C#)">
         <Template Name="Generated - Classes Master (C#)" Path="{fixup}EntitySpaces\C#\Generated - Classes Master (C#).est" Version="2012.0.0.0" />
         <Input>
-          <Item Type="System.Boolean" Key="WcfIsRequired" Value="False" />
-          <Item Type="System.Boolean" Key="WcfSupport" Value="False" />
-          <Item Type="System.Boolean" Key="CompactXML" Value="False" />
-          <Item Type="System.Boolean" Key="WcfEmitDefaultValue" Value="True" />
-          <Item Type="System.Boolean" Key="MetadataClassShouldIgnoreSchema" Value="True" />
-          <Item Type="System.Boolean" Key="LINQtoSQL" Value="False" />
-          <Item Type="System.String" Key="Namespace" Value="BusinessObjectsRTM" />
-          <Item Type="System.Boolean" Key="DebugVisualizer" Value="False" />
-          <Item Type="System.Boolean" Key="GenerateHierarchicalModel" Value="True" />
-          <Item Type="System.Boolean" Key="SupportINotifyChanged" Value="False" />
-          <Item Type="System.Boolean" Key="TargetMultipleDatabases" Value="False" />
-          <Item Type="System.Boolean" Key="TargetTheCompactFramework" Value="False" />
-          <Item Type="(null)" Key="View" />
-          <Item Type="System.Boolean" Key="MetadataClassShouldIgnoreCatalog" Value="True" />
-          <Item Type="System.Boolean" Key="UseDnnObjectQualifier" Value="False" />
-          <Item Type="System.Boolean" Key="GenerateStrProperties" Value="True" />
-          <Item Type="System.String" Key="ConnectionName" Value="RTM" />
-          <Item Type="System.String" Key="Database" Value="RTM" />
-          <Item Type="System.String" Key="EntityType" Value="Tables" />
-          <Item Type="System.Collections.ArrayList" Key="Entities" Value="dbo.Cliente" />
-          <Item Type="System.Boolean" Key="GenerateProxyStub" Value="False" />
-          <Item Type="System.Boolean" Key="SerializableQueries" Value="False" />
-          <Item Type="System.Boolean" Key="GenerateHierarchicalDataContracts" Value="False" />
-          <Item Type="System.Boolean" Key="GenerateHierarchicalRiaServicesSupport" Value="False" />
-          <Item Type="System.String" Key="WcfDataContract" Value="http://tempuri.org/" />
           <Item Type="System.Boolean" Key="DebuggerDisplay" Value="True" />
-          <Item Type="System.String" Key="OutputPath" Value="{fixup\generated\}" />
-          <Item Type="System.Boolean" Key="WcfOrder" Value="True" />
+          <Item Type="System.Boolean" Key="GenerateHierarchicalModel" Value="True" />
           <Item Type="System.Boolean" Key="UseCustomBaseClass" Value="False" />
-          <Item Type="System.Boolean" Key="GenerateSingleFile" Value="True" />
+          <Item Type="System.Boolean" Key="UseDnnObjectQualifier" Value="False" />
+          <Item Type="System.Boolean" Key="SupportINotifyChanged" Value="False" />
+          <Item Type="System.String" Key="WcfDataContract" Value="http://tempuri.org/" />
+          <Item Type="System.Boolean" Key="LINQtoSQL" Value="False" />
+          <Item Type="System.String" Key="EntityType" Value="Tables" />
+          <Item Type="System.Boolean" Key="CompactXML" Value="False" />
+          <Item Type="System.Boolean" Key="TargetTheCompactFramework" Value="False" />
           <Item Type="System.Boolean" Key="IncludeRowStateInXml" Value="True" />
+          <Item Type="System.Boolean" Key="WcfEmitDefaultValue" Value="True" />
+          <Item Type="System.Boolean" Key="DebugVisualizer" Value="False" />
+          <Item Type="System.Boolean" Key="GenerateHierarchicalDataContracts" Value="False" />
+          <Item Type="System.String" Key="Database" Value="RTM" />
+          <Item Type="System.Boolean" Key="GenerateStrProperties" Value="True" />
+          <Item Type="EntitySpaces.MetadataEngine.Sql.SqlTable" Key="Table" Value="EntitySpaces.MetadataEngine.Sql.SqlTable" />
+          <Item Type="System.Boolean" Key="GenerateHierarchicalRiaServicesSupport" Value="False" />
+          <Item Type="EntitySpaces.MetadataEngine.esPluginSource" Key="Source" Value="EntitySpaces.MetadataEngine.esPluginSource" />
+          <Item Type="System.Boolean" Key="MetadataClassShouldIgnoreSchema" Value="True" />
+          <Item Type="System.Boolean" Key="GenerateSingleFile" Value="True" />
+          <Item Type="System.Boolean" Key="TargetMultipleDatabases" Value="False" />
+          <Item Type="System.Boolean" Key="GenerateProxyStub" Value="False" />
+          <Item Type="System.Boolean" Key="WcfIsRequired" Value="False" />
           <Item Type="System.Boolean" Key="GenerateHierarchicalModelSelectedTablesOnly" Value="False" />
+          <Item Type="System.Boolean" Key="WcfOrder" Value="True" />
+          <Item Type="System.String" Key="ConnectionName" Value="RTM" />
+          <Item Type="System.Boolean" Key="SerializableQueries" Value="False" />
+          <Item Type="EntitySpaces.MetadataEngine.Sql.SqlColumns" Key="Columns" Value="EntitySpaces.MetadataEngine.Sql.SqlColumns" />
+          <Item Type="System.String" Key="OutputPath" Value="{fixup\generated\}" />
+          <Item Type="System.String" Key="Namespace" Value="BusinessObjectsRTM" />
+          <Item Type="(null)" Key="View" />
+          <Item Type="System.Boolean" Key="WcfSupport" Value="False" />
+          <Item Type="System.Collections.ArrayList" Key="Entities" Value="dbo.Cliente,dbo.OrdenDetalle,dbo.Ordenes,dbo.Productos,dbo.Usuario" />
+          <Item Type="System.Boolean" Key="MetadataClassShouldIgnoreCatalog" Value="True" />
         </Input>
         <esSettings>
           <Driver>SQL</Driver>
@@ -127,7 +130,7 @@
           <Item Type="System.String" Key="Database" Value="RTM" />
           <Item Type="System.String" Key="Namespace" Value="BusinessObjectsRTM" />
           <Item Type="System.String" Key="OutputPath" Value="{fixup\custom\}" />
-          <Item Type="System.Collections.ArrayList" Key="Entities" Value="dbo.Cliente" />
+          <Item Type="System.Collections.ArrayList" Key="Entities" Value="dbo.Cliente,dbo.OrdenDetalle,dbo.Ordenes,dbo.Productos,dbo.Usuario" />
           <Item Type="System.String" Key="EntityType" Value="Tables" />
         </Input>
         <esSettings>

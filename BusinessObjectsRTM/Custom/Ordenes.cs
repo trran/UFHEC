@@ -7,7 +7,7 @@
 ===============================================================================
 EntitySpaces Version : 2012.1.0930.0
 EntitySpaces Driver  : SQL
-Date Generated       : 16/11/2019 02:05:40 a.m.
+Date Generated       : 12/4/2019 10:17:12 PM
 ===============================================================================
 */
 
@@ -23,8 +23,7 @@ namespace BusinessObjectsRTM
 	{
 		public Ordenes()
 		{
-
-   
+		
 		}
 	}
 }

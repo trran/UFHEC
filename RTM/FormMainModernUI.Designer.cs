@@ -100,7 +100,7 @@
       this.buttonReporte.TabIndex = 4;
       this.buttonReporte.Text = "Reporte";
       this.buttonReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.toolTip1.SetToolTip(this.buttonReporte, "Usuarios");
+      this.toolTip1.SetToolTip(this.buttonReporte, "Reporte");
       this.buttonReporte.UseVisualStyleBackColor = true;
       this.buttonReporte.Click += new System.EventHandler(this.buttonReporte_Click);
       // 

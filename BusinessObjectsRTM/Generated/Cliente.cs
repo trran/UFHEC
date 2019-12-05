@@ -8,7 +8,7 @@
 ===============================================================================
 EntitySpaces Version : 2012.1.0930.0
 EntitySpaces Driver  : SQL
-Date Generated       : 12/1/2019 8:38:52 PM
+Date Generated       : 12/4/2019 10:16:52 PM
 ===============================================================================
 */
 
@@ -791,7 +791,141 @@ namespace BusinessObjectsRTM
 	public partial class Cliente : esCliente
 	{
 
+		#region OrdenesCollectionByClienteId - Zero To Many
 		
+		static public esPrefetchMap Prefetch_OrdenesCollectionByClienteId
+		{
+			get
+			{
+				esPrefetchMap map = new esPrefetchMap();
+				map.PrefetchDelegate = BusinessObjectsRTM.Cliente.OrdenesCollectionByClienteId_Delegate;
+				map.PropertyName = "OrdenesCollectionByClienteId";
+				map.MyColumnName = "ClienteId";
+				map.ParentColumnName = "Id";
+				map.IsMultiPartKey = false;
+				return map;
+			}
+		}		
+		
+		static private void OrdenesCollectionByClienteId_Delegate(esPrefetchParameters data)
+		{
+			ClienteQuery parent = new ClienteQuery(data.NextAlias());
+
+			OrdenesQuery me = data.You != null ? data.You as OrdenesQuery : new OrdenesQuery(data.NextAlias());
+
+			if (data.Root == null)
+			{
+				data.Root = me;
+			}
+			
+			data.Root.InnerJoin(parent).On(parent.Id == me.ClienteId);
+
+			data.You = parent;
+		}			
+		
+		/// <summary>
+		/// Zero to Many
+		/// Foreign Key Name - FK_Ordenes_Cliente
+		/// </summary>
+
+		[XmlIgnore]
+		public OrdenesCollection OrdenesCollectionByClienteId
+		{
+			get
+			{
+				if(this._OrdenesCollectionByClienteId == null)
+				{
+					this._OrdenesCollectionByClienteId = new OrdenesCollection();
+					this._OrdenesCollectionByClienteId.es.Connection.Name = this.es.Connection.Name;
+					this.SetPostSave("OrdenesCollectionByClienteId", this._OrdenesCollectionByClienteId);
+				
+					if (this.Id != null)
+					{
+						if (!this.es.IsLazyLoadDisabled)
+						{
+							this._OrdenesCollectionByClienteId.Query.Where(this._OrdenesCollectionByClienteId.Query.ClienteId == this.Id);
+							this._OrdenesCollectionByClienteId.Query.Load();
+						}
+
+						// Auto-hookup Foreign Keys
+						this._OrdenesCollectionByClienteId.fks.Add(OrdenesMetadata.ColumnNames.ClienteId, this.Id);
+					}
+				}
+
+				return this._OrdenesCollectionByClienteId;
+			}
+			
+			set 
+			{ 
+				if (value != null) throw new Exception("'value' Must be null"); 
+			 
+				if (this._OrdenesCollectionByClienteId != null) 
+				{ 
+					this.RemovePostSave("OrdenesCollectionByClienteId"); 
+					this._OrdenesCollectionByClienteId = null;
+					
+				} 
+			} 			
+		}
+			
+		
+		private OrdenesCollection _OrdenesCollectionByClienteId;
+		#endregion
+
+		
+		protected override esEntityCollectionBase CreateCollectionForPrefetch(string name)
+		{
+			esEntityCollectionBase coll = null;
+
+			switch (name)
+			{
+				case "OrdenesCollectionByClienteId":
+					coll = this.OrdenesCollectionByClienteId;
+					break;	
+			}
+
+			return coll;
+		}		
+		/// <summary>
+		/// Used internally by the entity's hierarchical properties.
+		/// </summary>
+		protected override List<esPropertyDescriptor> GetHierarchicalProperties()
+		{
+			List<esPropertyDescriptor> props = new List<esPropertyDescriptor>();
+			
+			props.Add(new esPropertyDescriptor(this, "OrdenesCollectionByClienteId", typeof(OrdenesCollection), new Ordenes()));
+		
+			return props;
+		}
+		
+		/// <summary>
+		/// Called by ApplyPostSaveKeys 
+		/// </summary>
+		/// <param name="coll">The collection to enumerate over</param>
+		/// <param name="key">"The column name</param>
+		/// <param name="value">The column value</param>
+		private void Apply(esEntityCollectionBase coll, string key, object value)
+		{
+			foreach (esEntity obj in coll)
+			{
+				if (obj.es.IsAdded)
+				{
+					obj.SetProperty(key, value);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Used internally for retrieving AutoIncrementing keys
+		/// during hierarchical PostSave.
+		/// </summary>
+		protected override void ApplyPostSaveKeys()
+		{
+			if(this._OrdenesCollectionByClienteId != null)
+			{
+				Apply(this._OrdenesCollectionByClienteId, "ClienteId", this.Id);
+			}
+		}
 		
 	}
 	

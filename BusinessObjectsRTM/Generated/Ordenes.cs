@@ -8,7 +8,7 @@
 ===============================================================================
 EntitySpaces Version : 2012.1.0930.0
 EntitySpaces Driver  : SQL
-Date Generated       : 16/11/2019 02:05:06 a.m.
+Date Generated       : 12/4/2019 10:16:55 PM
 ===============================================================================
 */
 
@@ -227,61 +227,103 @@ namespace BusinessObjectsRTM
 		}		
 		
 		/// <summary>
-		/// Maps to Ordenes.IdConsignatario
+		/// Maps to Ordenes.ClienteId
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
-		virtual public System.Int32? IdConsignatario
+		virtual public System.Int32? ClienteId
 		{
 			get
 			{
-				return base.GetSystemInt32(OrdenesMetadata.ColumnNames.IdConsignatario);
+				return base.GetSystemInt32(OrdenesMetadata.ColumnNames.ClienteId);
 			}
 			
 			set
 			{
-				if(base.SetSystemInt32(OrdenesMetadata.ColumnNames.IdConsignatario, value))
+				if(base.SetSystemInt32(OrdenesMetadata.ColumnNames.ClienteId, value))
 				{
-					OnPropertyChanged(OrdenesMetadata.PropertyNames.IdConsignatario);
+					this._UpToClienteByClienteId = null;
+					this.OnPropertyChanged("UpToClienteByClienteId");
+					OnPropertyChanged(OrdenesMetadata.PropertyNames.ClienteId);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Ordenes.NombreConsignatario
+		/// Maps to Ordenes.ClienteNombre
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
-		virtual public System.String NombreConsignatario
+		virtual public System.String ClienteNombre
 		{
 			get
 			{
-				return base.GetSystemString(OrdenesMetadata.ColumnNames.NombreConsignatario);
+				return base.GetSystemString(OrdenesMetadata.ColumnNames.ClienteNombre);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(OrdenesMetadata.ColumnNames.NombreConsignatario, value))
+				if(base.SetSystemString(OrdenesMetadata.ColumnNames.ClienteNombre, value))
 				{
-					OnPropertyChanged(OrdenesMetadata.PropertyNames.NombreConsignatario);
+					OnPropertyChanged(OrdenesMetadata.PropertyNames.ClienteNombre);
 				}
 			}
 		}		
 		
 		/// <summary>
-		/// Maps to Ordenes.Direccion
+		/// Maps to Ordenes.ClienteDireccion
 		/// </summary>
 		[DataMember(EmitDefaultValue=false)]
-		virtual public System.String Direccion
+		virtual public System.String ClienteDireccion
 		{
 			get
 			{
-				return base.GetSystemString(OrdenesMetadata.ColumnNames.Direccion);
+				return base.GetSystemString(OrdenesMetadata.ColumnNames.ClienteDireccion);
 			}
 			
 			set
 			{
-				if(base.SetSystemString(OrdenesMetadata.ColumnNames.Direccion, value))
+				if(base.SetSystemString(OrdenesMetadata.ColumnNames.ClienteDireccion, value))
 				{
-					OnPropertyChanged(OrdenesMetadata.PropertyNames.Direccion);
+					OnPropertyChanged(OrdenesMetadata.PropertyNames.ClienteDireccion);
+				}
+			}
+		}		
+		
+		/// <summary>
+		/// Maps to Ordenes.DocumentType
+		/// </summary>
+		[DataMember(EmitDefaultValue=false)]
+		virtual public System.String DocumentType
+		{
+			get
+			{
+				return base.GetSystemString(OrdenesMetadata.ColumnNames.DocumentType);
+			}
+			
+			set
+			{
+				if(base.SetSystemString(OrdenesMetadata.ColumnNames.DocumentType, value))
+				{
+					OnPropertyChanged(OrdenesMetadata.PropertyNames.DocumentType);
+				}
+			}
+		}		
+		
+		/// <summary>
+		/// Maps to Ordenes.DocumentNo
+		/// </summary>
+		[DataMember(EmitDefaultValue=false)]
+		virtual public System.String DocumentNo
+		{
+			get
+			{
+				return base.GetSystemString(OrdenesMetadata.ColumnNames.DocumentNo);
+			}
+			
+			set
+			{
+				if(base.SetSystemString(OrdenesMetadata.ColumnNames.DocumentNo, value))
+				{
+					OnPropertyChanged(OrdenesMetadata.PropertyNames.DocumentNo);
 				}
 			}
 		}		
@@ -322,6 +364,26 @@ namespace BusinessObjectsRTM
 				if(base.SetSystemString(OrdenesMetadata.ColumnNames.Email, value))
 				{
 					OnPropertyChanged(OrdenesMetadata.PropertyNames.Email);
+				}
+			}
+		}		
+		
+		/// <summary>
+		/// Maps to Ordenes.IdMoneda
+		/// </summary>
+		[DataMember(EmitDefaultValue=false)]
+		virtual public System.String IdMoneda
+		{
+			get
+			{
+				return base.GetSystemString(OrdenesMetadata.ColumnNames.IdMoneda);
+			}
+			
+			set
+			{
+				if(base.SetSystemString(OrdenesMetadata.ColumnNames.IdMoneda, value))
+				{
+					OnPropertyChanged(OrdenesMetadata.PropertyNames.IdMoneda);
 				}
 			}
 		}		
@@ -406,6 +468,32 @@ namespace BusinessObjectsRTM
 			}
 		}		
 		
+		/// <summary>
+		/// Maps to Ordenes.UsuarioId
+		/// </summary>
+		[DataMember(EmitDefaultValue=false)]
+		virtual public System.Int32? UsuarioId
+		{
+			get
+			{
+				return base.GetSystemInt32(OrdenesMetadata.ColumnNames.UsuarioId);
+			}
+			
+			set
+			{
+				if(base.SetSystemInt32(OrdenesMetadata.ColumnNames.UsuarioId, value))
+				{
+					this._UpToUsuarioByUsuarioId = null;
+					this.OnPropertyChanged("UpToUsuarioByUsuarioId");
+					OnPropertyChanged(OrdenesMetadata.PropertyNames.UsuarioId);
+				}
+			}
+		}		
+		
+		[CLSCompliant(false)]
+		internal protected Cliente _UpToClienteByClienteId;
+		[CLSCompliant(false)]
+		internal protected Usuario _UpToUsuarioByUsuarioId;
 		#endregion	
 
 		#region .str() Properties
@@ -429,15 +517,19 @@ namespace BusinessObjectsRTM
 					switch (name)
 					{							
 						case "Id": this.str().Id = (string)value; break;							
-						case "IdConsignatario": this.str().IdConsignatario = (string)value; break;							
-						case "NombreConsignatario": this.str().NombreConsignatario = (string)value; break;							
-						case "Direccion": this.str().Direccion = (string)value; break;							
+						case "ClienteId": this.str().ClienteId = (string)value; break;							
+						case "ClienteNombre": this.str().ClienteNombre = (string)value; break;							
+						case "ClienteDireccion": this.str().ClienteDireccion = (string)value; break;							
+						case "DocumentType": this.str().DocumentType = (string)value; break;							
+						case "DocumentNo": this.str().DocumentNo = (string)value; break;							
 						case "Telefono": this.str().Telefono = (string)value; break;							
 						case "Email": this.str().Email = (string)value; break;							
+						case "IdMoneda": this.str().IdMoneda = (string)value; break;							
 						case "SubTotal": this.str().SubTotal = (string)value; break;							
 						case "LlevaITBIS": this.str().LlevaITBIS = (string)value; break;							
 						case "Itbis": this.str().Itbis = (string)value; break;							
-						case "Total": this.str().Total = (string)value; break;
+						case "Total": this.str().Total = (string)value; break;							
+						case "UsuarioId": this.str().UsuarioId = (string)value; break;
 					}
 				}
 				else
@@ -451,11 +543,11 @@ namespace BusinessObjectsRTM
 								OnPropertyChanged(OrdenesMetadata.PropertyNames.Id);
 							break;
 						
-						case "IdConsignatario":
+						case "ClienteId":
 						
 							if (value == null || value is System.Int32)
-								this.IdConsignatario = (System.Int32?)value;
-								OnPropertyChanged(OrdenesMetadata.PropertyNames.IdConsignatario);
+								this.ClienteId = (System.Int32?)value;
+								OnPropertyChanged(OrdenesMetadata.PropertyNames.ClienteId);
 							break;
 						
 						case "SubTotal":
@@ -484,6 +576,13 @@ namespace BusinessObjectsRTM
 							if (value == null || value is System.Decimal)
 								this.Total = (System.Decimal?)value;
 								OnPropertyChanged(OrdenesMetadata.PropertyNames.Total);
+							break;
+						
+						case "UsuarioId":
+						
+							if (value == null || value is System.Int32)
+								this.UsuarioId = (System.Int32?)value;
+								OnPropertyChanged(OrdenesMetadata.PropertyNames.UsuarioId);
 							break;
 					
 
@@ -534,48 +633,78 @@ namespace BusinessObjectsRTM
 				}
 			}
 				
-			public System.String IdConsignatario
+			public System.String ClienteId
 			{
 				get
 				{
-					System.Int32? data = entity.IdConsignatario;
+					System.Int32? data = entity.ClienteId;
 					return (data == null) ? String.Empty : Convert.ToString(data);
 				}
 
 				set
 				{
-					if (value == null || value.Length == 0) entity.IdConsignatario = null;
-					else entity.IdConsignatario = Convert.ToInt32(value);
+					if (value == null || value.Length == 0) entity.ClienteId = null;
+					else entity.ClienteId = Convert.ToInt32(value);
 				}
 			}
 				
-			public System.String NombreConsignatario
+			public System.String ClienteNombre
 			{
 				get
 				{
-					System.String data = entity.NombreConsignatario;
+					System.String data = entity.ClienteNombre;
 					return (data == null) ? String.Empty : Convert.ToString(data);
 				}
 
 				set
 				{
-					if (value == null || value.Length == 0) entity.NombreConsignatario = null;
-					else entity.NombreConsignatario = Convert.ToString(value);
+					if (value == null || value.Length == 0) entity.ClienteNombre = null;
+					else entity.ClienteNombre = Convert.ToString(value);
 				}
 			}
 				
-			public System.String Direccion
+			public System.String ClienteDireccion
 			{
 				get
 				{
-					System.String data = entity.Direccion;
+					System.String data = entity.ClienteDireccion;
 					return (data == null) ? String.Empty : Convert.ToString(data);
 				}
 
 				set
 				{
-					if (value == null || value.Length == 0) entity.Direccion = null;
-					else entity.Direccion = Convert.ToString(value);
+					if (value == null || value.Length == 0) entity.ClienteDireccion = null;
+					else entity.ClienteDireccion = Convert.ToString(value);
+				}
+			}
+				
+			public System.String DocumentType
+			{
+				get
+				{
+					System.String data = entity.DocumentType;
+					return (data == null) ? String.Empty : Convert.ToString(data);
+				}
+
+				set
+				{
+					if (value == null || value.Length == 0) entity.DocumentType = null;
+					else entity.DocumentType = Convert.ToString(value);
+				}
+			}
+				
+			public System.String DocumentNo
+			{
+				get
+				{
+					System.String data = entity.DocumentNo;
+					return (data == null) ? String.Empty : Convert.ToString(data);
+				}
+
+				set
+				{
+					if (value == null || value.Length == 0) entity.DocumentNo = null;
+					else entity.DocumentNo = Convert.ToString(value);
 				}
 			}
 				
@@ -606,6 +735,21 @@ namespace BusinessObjectsRTM
 				{
 					if (value == null || value.Length == 0) entity.Email = null;
 					else entity.Email = Convert.ToString(value);
+				}
+			}
+				
+			public System.String IdMoneda
+			{
+				get
+				{
+					System.String data = entity.IdMoneda;
+					return (data == null) ? String.Empty : Convert.ToString(data);
+				}
+
+				set
+				{
+					if (value == null || value.Length == 0) entity.IdMoneda = null;
+					else entity.IdMoneda = Convert.ToString(value);
 				}
 			}
 				
@@ -666,6 +810,21 @@ namespace BusinessObjectsRTM
 				{
 					if (value == null || value.Length == 0) entity.Total = null;
 					else entity.Total = Convert.ToDecimal(value);
+				}
+			}
+				
+			public System.String UsuarioId
+			{
+				get
+				{
+					System.Int32? data = entity.UsuarioId;
+					return (data == null) ? String.Empty : Convert.ToString(data);
+				}
+
+				set
+				{
+					if (value == null || value.Length == 0) entity.UsuarioId = null;
+					else entity.UsuarioId = Convert.ToInt32(value);
 				}
 			}
 			
@@ -826,15 +985,19 @@ namespace BusinessObjectsRTM
             switch (name)
             {
 				case "Id": return this.Id;
-				case "IdConsignatario": return this.IdConsignatario;
-				case "NombreConsignatario": return this.NombreConsignatario;
-				case "Direccion": return this.Direccion;
+				case "ClienteId": return this.ClienteId;
+				case "ClienteNombre": return this.ClienteNombre;
+				case "ClienteDireccion": return this.ClienteDireccion;
+				case "DocumentType": return this.DocumentType;
+				case "DocumentNo": return this.DocumentNo;
 				case "Telefono": return this.Telefono;
 				case "Email": return this.Email;
+				case "IdMoneda": return this.IdMoneda;
 				case "SubTotal": return this.SubTotal;
 				case "LlevaITBIS": return this.LlevaITBIS;
 				case "Itbis": return this.Itbis;
 				case "Total": return this.Total;
+				case "UsuarioId": return this.UsuarioId;
 
                 default: return null;
             }
@@ -849,19 +1012,29 @@ namespace BusinessObjectsRTM
 			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.Id, esSystemType.Int32); }
 		} 
 		
-		public esQueryItem IdConsignatario
+		public esQueryItem ClienteId
 		{
-			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.IdConsignatario, esSystemType.Int32); }
+			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.ClienteId, esSystemType.Int32); }
 		} 
 		
-		public esQueryItem NombreConsignatario
+		public esQueryItem ClienteNombre
 		{
-			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.NombreConsignatario, esSystemType.String); }
+			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.ClienteNombre, esSystemType.String); }
 		} 
 		
-		public esQueryItem Direccion
+		public esQueryItem ClienteDireccion
 		{
-			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.Direccion, esSystemType.String); }
+			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.ClienteDireccion, esSystemType.String); }
+		} 
+		
+		public esQueryItem DocumentType
+		{
+			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.DocumentType, esSystemType.String); }
+		} 
+		
+		public esQueryItem DocumentNo
+		{
+			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.DocumentNo, esSystemType.String); }
 		} 
 		
 		public esQueryItem Telefono
@@ -872,6 +1045,11 @@ namespace BusinessObjectsRTM
 		public esQueryItem Email
 		{
 			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.Email, esSystemType.String); }
+		} 
+		
+		public esQueryItem IdMoneda
+		{
+			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.IdMoneda, esSystemType.String); }
 		} 
 		
 		public esQueryItem SubTotal
@@ -894,6 +1072,11 @@ namespace BusinessObjectsRTM
 			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.Total, esSystemType.Decimal); }
 		} 
 		
+		public esQueryItem UsuarioId
+		{
+			get { return new esQueryItem(this, OrdenesMetadata.ColumnNames.UsuarioId, esSystemType.Int32); }
+		} 
+		
 		#endregion
 		
 	}
@@ -903,90 +1086,182 @@ namespace BusinessObjectsRTM
 	public partial class Ordenes : esOrdenes
 	{
 
-		#region OrdenesDetalleCollectionByIdOrden - Zero To Many
-
-        public override void Save()
-        {
-            base.Save();
-        }
-		static public esPrefetchMap Prefetch_OrdenesDetalleCollectionByIdOrden
+		#region OrdenDetalleCollectionByOrdenId - Zero To Many
+		
+		static public esPrefetchMap Prefetch_OrdenDetalleCollectionByOrdenId
 		{
 			get
 			{
 				esPrefetchMap map = new esPrefetchMap();
-				map.PrefetchDelegate = BusinessObjectsRTM.Ordenes.OrdenesDetalleCollectionByIdOrden_Delegate;
-				map.PropertyName = "OrdenesDetalleCollectionByIdOrden";
-				map.MyColumnName = "IdOrden";
+				map.PrefetchDelegate = BusinessObjectsRTM.Ordenes.OrdenDetalleCollectionByOrdenId_Delegate;
+				map.PropertyName = "OrdenDetalleCollectionByOrdenId";
+				map.MyColumnName = "OrdenId";
 				map.ParentColumnName = "Id";
 				map.IsMultiPartKey = false;
 				return map;
 			}
 		}		
 		
-		static private void OrdenesDetalleCollectionByIdOrden_Delegate(esPrefetchParameters data)
+		static private void OrdenDetalleCollectionByOrdenId_Delegate(esPrefetchParameters data)
 		{
 			OrdenesQuery parent = new OrdenesQuery(data.NextAlias());
 
-			OrdenesDetalleQuery me = data.You != null ? data.You as OrdenesDetalleQuery : new OrdenesDetalleQuery(data.NextAlias());
+			OrdenDetalleQuery me = data.You != null ? data.You as OrdenDetalleQuery : new OrdenDetalleQuery(data.NextAlias());
 
 			if (data.Root == null)
 			{
 				data.Root = me;
 			}
 			
-			data.Root.InnerJoin(parent).On(parent.Id == me.IdOrden);
+			data.Root.InnerJoin(parent).On(parent.Id == me.OrdenId);
 
 			data.You = parent;
 		}			
 		
 		/// <summary>
 		/// Zero to Many
-		/// Foreign Key Name - FK_OrdenesDetalle_Ordenes
+		/// Foreign Key Name - FK_OrdenDetalle_Ordenes
 		/// </summary>
 
 		[XmlIgnore]
-		public OrdenesDetalleCollection OrdenesDetalleCollectionByIdOrden
+		public OrdenDetalleCollection OrdenDetalleCollectionByOrdenId
 		{
 			get
 			{
-				if(this._OrdenesDetalleCollectionByIdOrden == null)
+				if(this._OrdenDetalleCollectionByOrdenId == null)
 				{
-					this._OrdenesDetalleCollectionByIdOrden = new OrdenesDetalleCollection();
-					this._OrdenesDetalleCollectionByIdOrden.es.Connection.Name = this.es.Connection.Name;
-					this.SetPostSave("OrdenesDetalleCollectionByIdOrden", this._OrdenesDetalleCollectionByIdOrden);
+					this._OrdenDetalleCollectionByOrdenId = new OrdenDetalleCollection();
+					this._OrdenDetalleCollectionByOrdenId.es.Connection.Name = this.es.Connection.Name;
+					this.SetPostSave("OrdenDetalleCollectionByOrdenId", this._OrdenDetalleCollectionByOrdenId);
 				
 					if (this.Id != null)
 					{
 						if (!this.es.IsLazyLoadDisabled)
 						{
-							this._OrdenesDetalleCollectionByIdOrden.Query.Where(this._OrdenesDetalleCollectionByIdOrden.Query.IdOrden == this.Id);
-							this._OrdenesDetalleCollectionByIdOrden.Query.Load();
+							this._OrdenDetalleCollectionByOrdenId.Query.Where(this._OrdenDetalleCollectionByOrdenId.Query.OrdenId == this.Id);
+							this._OrdenDetalleCollectionByOrdenId.Query.Load();
 						}
 
 						// Auto-hookup Foreign Keys
-						this._OrdenesDetalleCollectionByIdOrden.fks.Add(OrdenesDetalleMetadata.ColumnNames.IdOrden, this.Id);
+						this._OrdenDetalleCollectionByOrdenId.fks.Add(OrdenDetalleMetadata.ColumnNames.OrdenId, this.Id);
 					}
 				}
 
-				return this._OrdenesDetalleCollectionByIdOrden;
+				return this._OrdenDetalleCollectionByOrdenId;
 			}
 			
 			set 
 			{ 
 				if (value != null) throw new Exception("'value' Must be null"); 
 			 
-				if (this._OrdenesDetalleCollectionByIdOrden != null) 
+				if (this._OrdenDetalleCollectionByOrdenId != null) 
 				{ 
-					this.RemovePostSave("OrdenesDetalleCollectionByIdOrden"); 
-					this._OrdenesDetalleCollectionByIdOrden = null;
+					this.RemovePostSave("OrdenDetalleCollectionByOrdenId"); 
+					this._OrdenDetalleCollectionByOrdenId = null;
 					
 				} 
 			} 			
 		}
 			
 		
-		private OrdenesDetalleCollection _OrdenesDetalleCollectionByIdOrden;
+		private OrdenDetalleCollection _OrdenDetalleCollectionByOrdenId;
 		#endregion
+
+				
+		#region UpToClienteByClienteId - Many To One
+		/// <summary>
+		/// Many to One
+		/// Foreign Key Name - FK_Ordenes_Cliente
+		/// </summary>
+
+		[XmlIgnore]
+					
+		public Cliente UpToClienteByClienteId
+		{
+			get
+			{
+				if (this.es.IsLazyLoadDisabled) return null;
+				
+				if(this._UpToClienteByClienteId == null && ClienteId != null)
+				{
+					this._UpToClienteByClienteId = new Cliente();
+					this._UpToClienteByClienteId.es.Connection.Name = this.es.Connection.Name;
+					this.SetPreSave("UpToClienteByClienteId", this._UpToClienteByClienteId);
+					this._UpToClienteByClienteId.Query.Where(this._UpToClienteByClienteId.Query.Id == this.ClienteId);
+					this._UpToClienteByClienteId.Query.Load();
+				}	
+				return this._UpToClienteByClienteId;
+			}
+			
+			set
+			{
+				this.RemovePreSave("UpToClienteByClienteId");
+				
+
+				if(value == null)
+				{
+					this.ClienteId = null;
+					this._UpToClienteByClienteId = null;
+				}
+				else
+				{
+					this.ClienteId = value.Id;
+					this._UpToClienteByClienteId = value;
+					this.SetPreSave("UpToClienteByClienteId", this._UpToClienteByClienteId);
+				}
+				
+			}
+		}
+		#endregion
+		
+
+				
+		#region UpToUsuarioByUsuarioId - Many To One
+		/// <summary>
+		/// Many to One
+		/// Foreign Key Name - FK_Ordenes_Usuario
+		/// </summary>
+
+		[XmlIgnore]
+					
+		public Usuario UpToUsuarioByUsuarioId
+		{
+			get
+			{
+				if (this.es.IsLazyLoadDisabled) return null;
+				
+				if(this._UpToUsuarioByUsuarioId == null && UsuarioId != null)
+				{
+					this._UpToUsuarioByUsuarioId = new Usuario();
+					this._UpToUsuarioByUsuarioId.es.Connection.Name = this.es.Connection.Name;
+					this.SetPreSave("UpToUsuarioByUsuarioId", this._UpToUsuarioByUsuarioId);
+					this._UpToUsuarioByUsuarioId.Query.Where(this._UpToUsuarioByUsuarioId.Query.Id == this.UsuarioId);
+					this._UpToUsuarioByUsuarioId.Query.Load();
+				}	
+				return this._UpToUsuarioByUsuarioId;
+			}
+			
+			set
+			{
+				this.RemovePreSave("UpToUsuarioByUsuarioId");
+				
+
+				if(value == null)
+				{
+					this.UsuarioId = null;
+					this._UpToUsuarioByUsuarioId = null;
+				}
+				else
+				{
+					this.UsuarioId = value.Id;
+					this._UpToUsuarioByUsuarioId = value;
+					this.SetPreSave("UpToUsuarioByUsuarioId", this._UpToUsuarioByUsuarioId);
+				}
+				
+			}
+		}
+		#endregion
+		
 
 		
 		protected override esEntityCollectionBase CreateCollectionForPrefetch(string name)
@@ -995,8 +1270,8 @@ namespace BusinessObjectsRTM
 
 			switch (name)
 			{
-				case "OrdenesDetalleCollectionByIdOrden":
-					coll = this.OrdenesDetalleCollectionByIdOrden;
+				case "OrdenDetalleCollectionByOrdenId":
+					coll = this.OrdenDetalleCollectionByOrdenId;
 					break;	
 			}
 
@@ -1009,9 +1284,24 @@ namespace BusinessObjectsRTM
 		{
 			List<esPropertyDescriptor> props = new List<esPropertyDescriptor>();
 			
-			props.Add(new esPropertyDescriptor(this, "OrdenesDetalleCollectionByIdOrden", typeof(OrdenesDetalleCollection), new OrdenesDetalle()));
+			props.Add(new esPropertyDescriptor(this, "OrdenDetalleCollectionByOrdenId", typeof(OrdenDetalleCollection), new OrdenDetalle()));
 		
 			return props;
+		}
+		/// <summary>
+		/// Used internally for retrieving AutoIncrementing keys
+		/// during hierarchical PreSave.
+		/// </summary>
+		protected override void ApplyPreSaveKeys()
+		{
+			if(!this.es.IsDeleted && this._UpToClienteByClienteId != null)
+			{
+				this.ClienteId = this._UpToClienteByClienteId.Id;
+			}
+			if(!this.es.IsDeleted && this._UpToUsuarioByUsuarioId != null)
+			{
+				this.UsuarioId = this._UpToUsuarioByUsuarioId.Id;
+			}
 		}
 		
 		/// <summary>
@@ -1037,9 +1327,9 @@ namespace BusinessObjectsRTM
 		/// </summary>
 		protected override void ApplyPostSaveKeys()
 		{
-			if(this._OrdenesDetalleCollectionByIdOrden != null)
+			if(this._OrdenDetalleCollectionByOrdenId != null)
 			{
-				Apply(this._OrdenesDetalleCollectionByIdOrden, "IdOrden", this.Id);
+				Apply(this._OrdenDetalleCollectionByOrdenId, "OrdenId", this.Id);
 			}
 		}
 		
@@ -1064,57 +1354,76 @@ namespace BusinessObjectsRTM
 			c.NumericPrecision = 10;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.IdConsignatario, 1, typeof(System.Int32), esSystemType.Int32);
-			c.PropertyName = OrdenesMetadata.PropertyNames.IdConsignatario;
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.ClienteId, 1, typeof(System.Int32), esSystemType.Int32);
+			c.PropertyName = OrdenesMetadata.PropertyNames.ClienteId;
 			c.NumericPrecision = 10;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.NombreConsignatario, 2, typeof(System.String), esSystemType.String);
-			c.PropertyName = OrdenesMetadata.PropertyNames.NombreConsignatario;
-			c.CharacterMaxLength = 250;
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.ClienteNombre, 2, typeof(System.String), esSystemType.String);
+			c.PropertyName = OrdenesMetadata.PropertyNames.ClienteNombre;
+			c.CharacterMaxLength = 256;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.Direccion, 3, typeof(System.String), esSystemType.String);
-			c.PropertyName = OrdenesMetadata.PropertyNames.Direccion;
-			c.CharacterMaxLength = 250;
-			c.IsNullable = true;
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.ClienteDireccion, 3, typeof(System.String), esSystemType.String);
+			c.PropertyName = OrdenesMetadata.PropertyNames.ClienteDireccion;
+			c.CharacterMaxLength = 512;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.Telefono, 4, typeof(System.String), esSystemType.String);
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.DocumentType, 4, typeof(System.String), esSystemType.String);
+			c.PropertyName = OrdenesMetadata.PropertyNames.DocumentType;
+			c.CharacterMaxLength = 3;
+			m_columns.Add(c);
+				
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.DocumentNo, 5, typeof(System.String), esSystemType.String);
+			c.PropertyName = OrdenesMetadata.PropertyNames.DocumentNo;
+			c.CharacterMaxLength = 11;
+			m_columns.Add(c);
+				
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.Telefono, 6, typeof(System.String), esSystemType.String);
 			c.PropertyName = OrdenesMetadata.PropertyNames.Telefono;
-			c.CharacterMaxLength = 50;
-			c.IsNullable = true;
+			c.CharacterMaxLength = 27;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.Email, 5, typeof(System.String), esSystemType.String);
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.Email, 7, typeof(System.String), esSystemType.String);
 			c.PropertyName = OrdenesMetadata.PropertyNames.Email;
-			c.CharacterMaxLength = 100;
-			c.IsNullable = true;
+			c.CharacterMaxLength = 128;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.SubTotal, 6, typeof(System.Decimal), esSystemType.Decimal);
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.IdMoneda, 8, typeof(System.String), esSystemType.String);
+			c.PropertyName = OrdenesMetadata.PropertyNames.IdMoneda;
+			c.CharacterMaxLength = 3;
+			m_columns.Add(c);
+				
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.SubTotal, 9, typeof(System.Decimal), esSystemType.Decimal);
 			c.PropertyName = OrdenesMetadata.PropertyNames.SubTotal;
 			c.NumericPrecision = 19;
-			c.HasDefault = true;
-			c.Default = @"((0))";
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.LlevaITBIS, 7, typeof(System.Boolean), esSystemType.Boolean);
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.LlevaITBIS, 10, typeof(System.Boolean), esSystemType.Boolean);
 			c.PropertyName = OrdenesMetadata.PropertyNames.LlevaITBIS;
+			c.HasDefault = true;
+			c.Default = @"((1))";
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.Itbis, 8, typeof(System.Decimal), esSystemType.Decimal);
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.Itbis, 11, typeof(System.Decimal), esSystemType.Decimal);
 			c.PropertyName = OrdenesMetadata.PropertyNames.Itbis;
-			c.NumericPrecision = 19;
-			c.HasDefault = true;
-			c.Default = @"((0))";
+			c.NumericPrecision = 22;
+			c.NumericScale = 6;
+			c.IsNullable = true;
+			c.IsComputed = true;
 			m_columns.Add(c);
 				
-			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.Total, 9, typeof(System.Decimal), esSystemType.Decimal);
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.Total, 12, typeof(System.Decimal), esSystemType.Decimal);
 			c.PropertyName = OrdenesMetadata.PropertyNames.Total;
-			c.NumericPrecision = 19;
-			c.HasDefault = true;
-			c.Default = @"((0))";
+			c.NumericPrecision = 23;
+			c.NumericScale = 6;
+			c.IsNullable = true;
+			c.IsComputed = true;
+			m_columns.Add(c);
+				
+			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.UsuarioId, 13, typeof(System.Int32), esSystemType.Int32);
+			c.PropertyName = OrdenesMetadata.PropertyNames.UsuarioId;
+			c.NumericPrecision = 10;
 			m_columns.Add(c);
 				
 		}
@@ -1144,15 +1453,19 @@ namespace BusinessObjectsRTM
 		public class ColumnNames
 		{ 
 			 public const string Id = "Id";
-			 public const string IdConsignatario = "IdConsignatario";
-			 public const string NombreConsignatario = "NombreConsignatario";
-			 public const string Direccion = "Direccion";
+			 public const string ClienteId = "ClienteId";
+			 public const string ClienteNombre = "ClienteNombre";
+			 public const string ClienteDireccion = "ClienteDireccion";
+			 public const string DocumentType = "DocumentType";
+			 public const string DocumentNo = "DocumentNo";
 			 public const string Telefono = "Telefono";
 			 public const string Email = "Email";
+			 public const string IdMoneda = "IdMoneda";
 			 public const string SubTotal = "SubTotal";
 			 public const string LlevaITBIS = "LlevaITBIS";
 			 public const string Itbis = "ITBIS";
 			 public const string Total = "Total";
+			 public const string UsuarioId = "UsuarioId";
 		}
 		#endregion	
 		
@@ -1160,15 +1473,19 @@ namespace BusinessObjectsRTM
 		public class PropertyNames
 		{ 
 			 public const string Id = "Id";
-			 public const string IdConsignatario = "IdConsignatario";
-			 public const string NombreConsignatario = "NombreConsignatario";
-			 public const string Direccion = "Direccion";
+			 public const string ClienteId = "ClienteId";
+			 public const string ClienteNombre = "ClienteNombre";
+			 public const string ClienteDireccion = "ClienteDireccion";
+			 public const string DocumentType = "DocumentType";
+			 public const string DocumentNo = "DocumentNo";
 			 public const string Telefono = "Telefono";
 			 public const string Email = "Email";
+			 public const string IdMoneda = "IdMoneda";
 			 public const string SubTotal = "SubTotal";
 			 public const string LlevaITBIS = "LlevaITBIS";
 			 public const string Itbis = "Itbis";
 			 public const string Total = "Total";
+			 public const string UsuarioId = "UsuarioId";
 		}
 		#endregion	
 
@@ -1214,15 +1531,19 @@ namespace BusinessObjectsRTM
 
 
 				meta.AddTypeMap("Id", new esTypeMap("int", "System.Int32"));
-				meta.AddTypeMap("IdConsignatario", new esTypeMap("int", "System.Int32"));
-				meta.AddTypeMap("NombreConsignatario", new esTypeMap("nvarchar", "System.String"));
-				meta.AddTypeMap("Direccion", new esTypeMap("nvarchar", "System.String"));
+				meta.AddTypeMap("ClienteId", new esTypeMap("int", "System.Int32"));
+				meta.AddTypeMap("ClienteNombre", new esTypeMap("nvarchar", "System.String"));
+				meta.AddTypeMap("ClienteDireccion", new esTypeMap("nvarchar", "System.String"));
+				meta.AddTypeMap("DocumentType", new esTypeMap("char", "System.String"));
+				meta.AddTypeMap("DocumentNo", new esTypeMap("nvarchar", "System.String"));
 				meta.AddTypeMap("Telefono", new esTypeMap("nvarchar", "System.String"));
 				meta.AddTypeMap("Email", new esTypeMap("nvarchar", "System.String"));
+				meta.AddTypeMap("IdMoneda", new esTypeMap("nvarchar", "System.String"));
 				meta.AddTypeMap("SubTotal", new esTypeMap("money", "System.Decimal"));
 				meta.AddTypeMap("LlevaITBIS", new esTypeMap("bit", "System.Boolean"));
-				meta.AddTypeMap("Itbis", new esTypeMap("money", "System.Decimal"));
-				meta.AddTypeMap("Total", new esTypeMap("money", "System.Decimal"));			
+				meta.AddTypeMap("Itbis", new esTypeMap("numeric", "System.Decimal"));
+				meta.AddTypeMap("Total", new esTypeMap("numeric", "System.Decimal"));
+				meta.AddTypeMap("UsuarioId", new esTypeMap("int", "System.Int32"));			
 				
 				
 				
