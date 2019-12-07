@@ -44,7 +44,16 @@ namespace RTM.Forms
         private void buttonOk_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            var seleted = metroGrid1.CurrentRow.Cells["Id"].Value;
+            object seleted = DBNull.Value;
+            try
+            {
+              seleted  = metroGrid1.CurrentRow.Cells["Id"].Value;
+            }
+            catch (Exception)
+            {
+              seleted = null;
+            }
+             
 
             Id = seleted  != null && seleted  != DBNull.Value  ? Convert.ToInt32(seleted) : 0;
           

@@ -283,7 +283,7 @@ namespace RTM.Forms
       numericUpDownSubtotal.Value = 0;
       numericUpDownItbis.Value = 0;
       numericUpDownTotal.Value = 0;
-
+      listViewDetails.Items.Clear();
       buttonLimpiar_Click(null, null);
     }
 
@@ -344,14 +344,15 @@ namespace RTM.Forms
 
     private void toolStripButtonPrint_Click(object sender, EventArgs e)
     {
-      if(ordenesController.IdOrden > 0)
+      if (ordenesController.IdOrden > 0)
       {
         FormReportViewer formReport = new FormReportViewer(@"../../Reports/InvoiceReport.rpt", ordenesController.LoadInvoiceData());
-      formReport.StartPosition = FormStartPosition.CenterScreen;
-      formReport.WindowState = FormWindowState.Maximized;
-      formReport.Show();
-      formReport.RefreshReport();
+        formReport.StartPosition = FormStartPosition.CenterScreen;
+        formReport.WindowState = FormWindowState.Maximized;
+        formReport.Show();
+        formReport.RefreshReport();
       }
+      EnableDisableControls(toolStripButtonUndo);
     }
   }
 }
