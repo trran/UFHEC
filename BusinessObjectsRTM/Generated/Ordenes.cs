@@ -8,7 +8,7 @@
 ===============================================================================
 EntitySpaces Version : 2012.1.0930.0
 EntitySpaces Driver  : SQL
-Date Generated       : 12/4/2019 10:16:55 PM
+Date Generated       : 12/5/2019 1:50:00 PM
 ===============================================================================
 */
 
@@ -1392,6 +1392,8 @@ namespace BusinessObjectsRTM
 			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.IdMoneda, 8, typeof(System.String), esSystemType.String);
 			c.PropertyName = OrdenesMetadata.PropertyNames.IdMoneda;
 			c.CharacterMaxLength = 3;
+			c.HasDefault = true;
+			c.Default = @"(N'DOP')";
 			m_columns.Add(c);
 				
 			c = new esColumnMetadata(OrdenesMetadata.ColumnNames.SubTotal, 9, typeof(System.Decimal), esSystemType.Decimal);

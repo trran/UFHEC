@@ -17,6 +17,7 @@ namespace RTM.Forms
   public partial class FormReportViewer : Form
   {
     private readonly DataTable _dataBinds;
+    private readonly DataSet _dsdataBinds = new DataSet();
     private readonly string _tableName;
     private readonly string _reportPath;
     private FormReportViewer()
@@ -32,6 +33,13 @@ namespace RTM.Forms
       _reportPath = reportPath;
     }
 
+    public FormReportViewer(string reportPath, DataSet dataBinds)
+    {
+      InitializeComponent();
+      _dsdataBinds = dataBinds;
+      _reportPath = reportPath;
+    }
+
     public void RefreshReport()
     {
       button1.Visible = false;
@@ -40,10 +48,19 @@ namespace RTM.Forms
 
     private void button1_Click(object sender, EventArgs e)
     {
-      _dataBinds.TableName = _tableName;
       ReportDocument reportDocument = new ReportDocument();
       reportDocument.Load(_reportPath);
-      reportDocument.SetDataSource(_dataBinds);
+
+      if (string.IsNullOrEmpty(_tableName))
+      {
+        reportDocument.SetDataSource(_dsdataBinds);
+      }
+      else
+      {
+        _dataBinds.TableName = _tableName;
+        reportDocument.SetDataSource(_dataBinds);
+      }
+
       crystalReportViewer.ReportSource = reportDocument;
       crystalReportViewer.RefreshReport();
     }

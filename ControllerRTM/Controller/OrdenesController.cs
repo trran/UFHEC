@@ -2,6 +2,7 @@
 using ControllerRTM.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace ControllerRTM.Controller
     public string ClienteNombre { get; set; }
     public string Direccion { get; set; }
     public string Telefono { get; set; }
+    public string DocumentType { get; set; }
+    public string Documento { get; set; }
     public string Email { get; set; }
     public decimal SubTotal { get; set; }
     public bool LlevaITBIS { get; set; }
@@ -35,7 +38,7 @@ namespace ControllerRTM.Controller
       try
       {
         AddNewEntity();
-        ScatterEntityValues();
+        GattherEntityValues();
         orden.Save();
         saved = orden.Id > 0;
       }
@@ -84,6 +87,8 @@ namespace ControllerRTM.Controller
       IdOrden = orden.Id ?? 0;
       ClienteId = orden.ClienteId ?? 0;
       ClienteNombre = orden.ClienteNombre;
+      DocumentType = orden.DocumentType;
+      Documento = orden.DocumentNo;
       Direccion = orden.ClienteDireccion;
       Email = orden.Email;
       Telefono = orden.Telefono;
@@ -98,11 +103,14 @@ namespace ControllerRTM.Controller
       orden.Id = IdOrden;
       orden.ClienteId = ClienteId;
       orden.ClienteNombre = ClienteNombre;
+      orden.DocumentType = DocumentType;
+      orden.DocumentNo = Documento;
       orden.ClienteDireccion = Direccion;
       orden.Email = Email;
       orden.Telefono = Telefono;
       orden.SubTotal = SubTotal;
       orden.LlevaITBIS = LlevaITBIS;
+      orden.UsuarioId = CurrentUserInfo.Id;
     }
 
     public System.Data.DataTable LoadDataTable(string criteria)
@@ -112,6 +120,28 @@ namespace ControllerRTM.Controller
       q.Where(q.ClienteNombre.Like("%" + criteria + "%") || q.DocumentNo.Like("%" + criteria + "%") || q.Telefono.Like("%" + criteria + "%") || q.ClienteDireccion.Like("%" + criteria + "%") || q.Email.Like("%" + criteria + "%"));
 
       return q.LoadDataTable();
+    }
+
+    public void CalcularSubTotal()
+    {
+      orden.SubTotal = orden.OrdenDetalleCollectionByOrdenId.Sum(a => a.Total);
+      orden.Save();
+    }
+
+    public DataSet LoadInvoiceData()
+    {
+      DataSet ds = new DataSet();
+      OrdenesQuery orden = new OrdenesQuery();
+      OrdenDetalleQuery ordenDetalle = new OrdenDetalleQuery();
+      
+      orden.Where(orden.Id == IdOrden);
+      ds.Tables.Add(orden.LoadDataTable());
+      ordenDetalle.Where(ordenDetalle.OrdenId == IdOrden);      
+      ds.Tables.Add(ordenDetalle.LoadDataTable());
+      ds.Tables[0].TableName = "Orden";
+      ds.Tables[1].TableName = "OrdenDetalle";
+
+      return ds;
     }
   }
 }

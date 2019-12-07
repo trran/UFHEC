@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ClienteController.cs" />
+    <Compile Include="Controller\OrdenesDetalleController.cs" />
     <Compile Include="Controller\ProductoController.cs" />
     <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="Controller\LoginController.cs" />

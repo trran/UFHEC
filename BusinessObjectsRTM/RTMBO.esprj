@@ -17,6 +17,7 @@
           <Item Type="System.Boolean" Key="TargetTheCompactFramework" Value="False" />
           <Item Type="System.Boolean" Key="IncludeRowStateInXml" Value="True" />
           <Item Type="System.Boolean" Key="WcfEmitDefaultValue" Value="True" />
+          <Item Type="System.Boolean" Key="MetadataClassShouldIgnoreSchema" Value="True" />
           <Item Type="System.Boolean" Key="DebugVisualizer" Value="False" />
           <Item Type="System.Boolean" Key="GenerateHierarchicalDataContracts" Value="False" />
           <Item Type="System.String" Key="Database" Value="RTM" />
@@ -24,11 +25,10 @@
           <Item Type="EntitySpaces.MetadataEngine.Sql.SqlTable" Key="Table" Value="EntitySpaces.MetadataEngine.Sql.SqlTable" />
           <Item Type="System.Boolean" Key="GenerateHierarchicalRiaServicesSupport" Value="False" />
           <Item Type="EntitySpaces.MetadataEngine.esPluginSource" Key="Source" Value="EntitySpaces.MetadataEngine.esPluginSource" />
-          <Item Type="System.Boolean" Key="MetadataClassShouldIgnoreSchema" Value="True" />
+          <Item Type="System.Boolean" Key="WcfIsRequired" Value="False" />
           <Item Type="System.Boolean" Key="GenerateSingleFile" Value="True" />
           <Item Type="System.Boolean" Key="TargetMultipleDatabases" Value="False" />
           <Item Type="System.Boolean" Key="GenerateProxyStub" Value="False" />
-          <Item Type="System.Boolean" Key="WcfIsRequired" Value="False" />
           <Item Type="System.Boolean" Key="GenerateHierarchicalModelSelectedTablesOnly" Value="False" />
           <Item Type="System.Boolean" Key="WcfOrder" Value="True" />
           <Item Type="System.String" Key="ConnectionName" Value="RTM" />
@@ -38,7 +38,7 @@
           <Item Type="System.String" Key="Namespace" Value="BusinessObjectsRTM" />
           <Item Type="(null)" Key="View" />
           <Item Type="System.Boolean" Key="WcfSupport" Value="False" />
-          <Item Type="System.Collections.ArrayList" Key="Entities" Value="dbo.Cliente,dbo.OrdenDetalle,dbo.Ordenes,dbo.Productos,dbo.Usuario" />
+          <Item Type="System.Collections.ArrayList" Key="Entities" Value="dbo.Ordenes" />
           <Item Type="System.Boolean" Key="MetadataClassShouldIgnoreCatalog" Value="True" />
         </Input>
         <esSettings>
