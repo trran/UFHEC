@@ -1,6 +1,7 @@
 ﻿using ControllerRTM;
 using ControllerRTM.Controller;
 using ControllerRTM.Interfaces;
+using CrystalDecisions.CrystalReports.Engine;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -186,6 +187,8 @@ namespace RTM.Forms
     public void AddNewEntity()
     {
       ordenesController.AddNewEntity();
+      ordenesDetalleController.AddNewEntity();
+
     }
 
     public void ScatterEntityValues()
@@ -284,12 +287,19 @@ namespace RTM.Forms
       numericUpDownItbis.Value = 0;
       numericUpDownTotal.Value = 0;
       listViewDetails.Items.Clear();
+      ordenesController.SubTotal = 0;
+      ordenesController.ITBIS = 0;
+      ordenesController.Total = 0;
+
       buttonLimpiar_Click(null, null);
     }
 
     private void toolStripButtonDelete_Click(object sender, EventArgs e)
     {
-
+      if (DeleteEntity(ordenId))
+      {
+        ScatterEntityValues();
+      }
     }
 
     private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -346,11 +356,28 @@ namespace RTM.Forms
     {
       if (ordenesController.IdOrden > 0)
       {
-        FormReportViewer formReport = new FormReportViewer(@"../../Reports/InvoiceReport.rpt", ordenesController.LoadInvoiceData());
+        DataSet ds = ordenesController.LoadInvoiceData();
+        ReportDocument reportDocument = new ReportDocument();
+        reportDocument.Load(@"../../Reports/InvoiceReport.rpt");
+
+        if (string.IsNullOrEmpty(string.Empty))
+        {
+          reportDocument.SetDataSource(ds);
+        }
+        else
+        {
+        //  _dataBinds.TableName = _tableName;
+          //reportDocument.SetDataSource(_dataBinds);
+        }
+
+        //reportDocument.PrintToPrinter(2, false, 1, 1);
+        /*
+        FormReportViewer formReport = new FormReportViewer();
         formReport.StartPosition = FormStartPosition.CenterScreen;
         formReport.WindowState = FormWindowState.Maximized;
         formReport.Show();
         formReport.RefreshReport();
+         * */
       }
       EnableDisableControls(toolStripButtonUndo);
     }

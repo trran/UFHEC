@@ -61,8 +61,9 @@ namespace RTM.Forms
         reportDocument.SetDataSource(_dataBinds);
       }
 
-      crystalReportViewer.ReportSource = reportDocument;
-      crystalReportViewer.RefreshReport();
+      reportDocument.PrintToPrinter(1, false, 1, 1);
+      //crystalReportViewer.ReportSource = reportDocument;
+      //crystalReportViewer.RefreshReport();
     }
 
     private void label1_Click(object sender, EventArgs e)
