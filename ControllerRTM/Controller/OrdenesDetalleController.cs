@@ -40,9 +40,14 @@ namespace ControllerRTM.Controller
         GattherEntityValues();
         ordenDetalle.Save();
         saved = ordenDetalle.Id > 0;
-  
-          ordenesController.CalcularSubTotal();
 
+        ordenesController.CalcularSubTotal();
+        ProductoController p = new ProductoController(_currentUsername);
+        p.SearchEntity(ordenDetalle.ProductoId);
+        p.ScatterEntityValues();
+        p.Qty -= Cantidad;
+        p.GattherEntityValues();
+        p.SaveEntity();
       }
       catch (Exception)
       {
@@ -58,11 +63,23 @@ namespace ControllerRTM.Controller
 
       try
       {
+        int cantidad = 0;
+        int idproducto = 0;
         AddNewEntity();
         if (deleted = SearchEntity(ids))
         {
+          cantidad = ordenDetalle.Cantidad ?? 0;
+          idproducto = ordenDetalle.ProductoId ?? 0;
           ordenDetalle.MarkAsDeleted();
           ordenDetalle.Save();
+
+          ProductoController p = new ProductoController(_currentUsername);
+          p.SearchEntity(idproducto);
+          p.ScatterEntityValues();
+          p.Qty += cantidad;
+          p.GattherEntityValues();
+          p.SaveEntity();
+          ordenesController.CalcularSubTotal();
         }
       }
       catch (Exception)

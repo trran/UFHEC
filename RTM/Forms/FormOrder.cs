@@ -22,6 +22,7 @@ namespace RTM.Forms
     private readonly OrdenesDetalleController ordenesDetalleController;
     private int clienteId;
     private int ordenId;
+    private int ordenDetalleId;
     private int idProducto;
     private decimal productoPrecio;
     private string documentType;
@@ -146,7 +147,6 @@ namespace RTM.Forms
         {
           ScatterEntityValues();
           EnableDisableControls(toolStripButtonUndo);
-          
         }
       };
 
@@ -165,6 +165,7 @@ namespace RTM.Forms
           EnableDisableControls(toolStripButtonUndo);
           ScatterEntityValues();
         }
+
       }
       catch (Exception)
       {
@@ -188,7 +189,6 @@ namespace RTM.Forms
     {
       ordenesController.AddNewEntity();
       ordenesDetalleController.AddNewEntity();
-
     }
 
     public void ScatterEntityValues()
@@ -221,9 +221,6 @@ namespace RTM.Forms
       ordenesController.Direccion = textBoxDireccion.Text;
       ordenesController.LlevaITBIS = metroCheckBoxLlevaITBIS.Checked;
       ordenesController.GattherEntityValues();
-      //numericUpDownSubtotal.Value = ordenesController.SubTotal;
-      //numericUpDownItbis.Value = ordenesController.ITBIS;
-      //numericUpDownTotal.Value = ordenesController.Total;
     }
 
     public DataTable LoadDataTable(string criteria)
@@ -296,9 +293,17 @@ namespace RTM.Forms
 
     private void toolStripButtonDelete_Click(object sender, EventArgs e)
     {
+      if (listViewDetails.Items.Count > 0)
+      {
+        MessageBox.Show("Debe eliminar los detalles de la orden para poder eliminarla.");
+        EnableDisableControls(toolStripButtonUndo);
+        return;
+      }
+
       if (DeleteEntity(ordenId))
       {
         ScatterEntityValues();
+        toolStrip1_ItemClicked(null, new ToolStripItemClickedEventArgs(toolStripButtonUndo));
       }
     }
 
@@ -338,6 +343,7 @@ namespace RTM.Forms
         ordenesDetalleController.SaveEntity();
         buttonLimpiar_Click(null, null);
         fillListViewDetails();
+
         ScatterEntityValues();
 
       }
@@ -349,37 +355,43 @@ namespace RTM.Forms
 
     private void buttonEliminar_Click(object sender, EventArgs e)
     {
+      ordenesDetalleController.DeleteEntity(ordenesDetalleController.Id);
+      buttonLimpiar_Click(null, null);
       fillListViewDetails();
+
+      ScatterEntityValues();
     }
 
     private void toolStripButtonPrint_Click(object sender, EventArgs e)
     {
       if (ordenesController.IdOrden > 0)
       {
-        DataSet ds = ordenesController.LoadInvoiceData();
-        ReportDocument reportDocument = new ReportDocument();
-        reportDocument.Load(@"../../Reports/InvoiceReport.rpt");
-
-        if (string.IsNullOrEmpty(string.Empty))
-        {
-          reportDocument.SetDataSource(ds);
-        }
-        else
-        {
-        //  _dataBinds.TableName = _tableName;
-          //reportDocument.SetDataSource(_dataBinds);
-        }
-
-        //reportDocument.PrintToPrinter(2, false, 1, 1);
-        /*
-        FormReportViewer formReport = new FormReportViewer();
+        FormReportViewer formReport = new FormReportViewer(@"../../Reports/InvoiceReport.rpt", ordenesController.LoadInvoiceData());
         formReport.StartPosition = FormStartPosition.CenterScreen;
         formReport.WindowState = FormWindowState.Maximized;
         formReport.Show();
         formReport.RefreshReport();
-         * */
       }
       EnableDisableControls(toolStripButtonUndo);
+    }
+
+    private void listViewDetails_DoubleClick(object sender, EventArgs e)
+    {
+      if(listViewDetails.SelectedItems != null)
+      {
+        ordenDetalleId = Convert.ToInt32(listViewDetails.SelectedItems[0].Text);
+        ordenesDetalleController.SearchEntity(ordenDetalleId);
+        ordenesDetalleController.ScatterEntityValues();
+        idProducto = ordenesDetalleController.ProductoId;
+        textBoxProductoDescripcion.Text = ordenesDetalleController.ProductoNombre;
+        numericUpDownCantidad.Value = ordenesDetalleController.Cantidad;
+        productoPrecio = ordenesDetalleController.Precio;
+      }
+    }
+
+    private void toolStripButtonEdit_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }

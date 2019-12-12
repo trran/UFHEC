@@ -428,6 +428,7 @@
       this.toolStripButtonEdit.Name = "toolStripButtonEdit";
       this.toolStripButtonEdit.Size = new System.Drawing.Size(45, 45);
       this.toolStripButtonEdit.Text = "Edit";
+      this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
       // 
       // toolStripSeparator2
       // 
@@ -504,6 +505,7 @@
       this.listViewDetails.TabIndex = 1;
       this.listViewDetails.UseCompatibleStateImageBehavior = false;
       this.listViewDetails.View = System.Windows.Forms.View.Details;
+      this.listViewDetails.DoubleClick += new System.EventHandler(this.listViewDetails_DoubleClick);
       // 
       // columnHeader1
       // 

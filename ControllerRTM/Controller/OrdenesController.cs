@@ -37,8 +37,7 @@ namespace ControllerRTM.Controller
       bool saved = false;
       try
       {
-        AddNewEntity();
-        GattherEntityValues();
+        //GattherEntityValues();
         orden.Save();
         saved = orden.Id > 0;
       }
@@ -124,6 +123,7 @@ namespace ControllerRTM.Controller
 
     public void CalcularSubTotal()
     {
+      orden.OrdenDetalleCollectionByOrdenId = null;
       orden.SubTotal = orden.OrdenDetalleCollectionByOrdenId.Sum(a => a.Total);
       orden.Save();
     }
